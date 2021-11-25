@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour
     public bool time_Center;
     public bool time_Center_Insti;
     public Coroutine time_Center_Check;
+    public bool can_Move = true;
     private void Awake()
     {
         if(instance == null)
@@ -47,14 +49,14 @@ public class Player : MonoBehaviour
     
     void Movement()
     {
-        if (player_Oj_List.Count != 0)
+        if (player_Oj_List.Count != 0 && can_Move)
         {
             if(!player_Oj_List[0].GetComponent<Player_Manager>().boss_Attack) // chua danh boss
                 transform.Translate(Vector3.forward * speedZ * Time.deltaTime);
             if (player_Oj_List[0].GetComponent<Player_Manager>().boss_Attack)
             {
-                cam.transform.parent = null;
-                cam.transform.position = new Vector3(0f, 15f, 113f);
+                can_Move = false;
+                cam.transform.position = Vector3.Lerp(cam.transform.position, new Vector3(0f, cam.transform.position.y, cam.transform.position.z), Time.deltaTime);
             }
             if (time_Center)
             {
@@ -71,7 +73,7 @@ public class Player : MonoBehaviour
                 }
             }
         }
-        else
+        else if(player_Oj_List.Count == 0)
         {
             menu_PlayerAgain.SetActive(true);
             menu_Controll.SetActive(false);
@@ -104,4 +106,9 @@ public class Player : MonoBehaviour
         time_Center = false;
     }
 
+
+    public void Reset()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
