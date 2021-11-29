@@ -12,6 +12,7 @@ TagManager:
   - ground
   - center
   - enemy
+  - tru
   layers:
   - Default
   - TransparentFX
