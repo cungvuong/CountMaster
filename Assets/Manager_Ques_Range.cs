@@ -10,17 +10,17 @@ public class Manager_Ques_Range : MonoBehaviour
     {
         range_Ques = GetComponentsInChildren<Range_Ques>();
 
-        for(int i=0; i<range_Ques.Length; i++)
-        {
-            if (i < 1)
-            {
-                range_Ques[i].ran_Num_Cal = 5;
-            }
-            else
-            {
-                range_Ques[i].ran_Num_Cal = 9;
-            }
-        }
+        //for(int i=0; i<range_Ques.Length; i++)
+        //{
+        //    if (i < 1)
+        //    {
+        //        range_Ques[i].ran_Num_Cal = 5;
+        //    }
+        //    else
+        //    {
+        //        range_Ques[i].ran_Num_Cal = 9;
+        //    }
+        //}
     }
 
     void Start()

@@ -10,6 +10,7 @@ public class Boss_Manager : Boss
     public int Health;
     private void Start()
     {
+        this.alive = true;
         this.health = Health;
         health_Text.text = this.health.ToString();
     }
@@ -17,6 +18,7 @@ public class Boss_Manager : Boss
     {
         if (collision.gameObject.tag == "player")
         {
+            this.health--;
             if (this.health <= 0)
             {
                 this.alive = false;
@@ -25,7 +27,6 @@ public class Boss_Manager : Boss
                 //Player.instance.speedZ = 0f;
                 //return;
             }
-            this.health--;
             health_Text.text = this.health.ToString();
         }
     }

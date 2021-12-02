@@ -13,6 +13,9 @@ TagManager:
   - center
   - enemy
   - tru
+  - point_spawn
+  - exit_slide
+  - die_zone
   layers:
   - Default
   - TransparentFX

@@ -11,7 +11,6 @@ public class Enemy_Bullet : MonoBehaviour
     {
         Destroy(gameObject, 2f);
         target = Player.instance.player_Oj_List[Random.Range(0, Player.instance.player_Oj_List.Count)];
-        Debug.Log(target.name);
     }
 
     // Update is called once per frame
@@ -22,8 +21,14 @@ public class Enemy_Bullet : MonoBehaviour
 
     void Movement()
     {
-        if(target.activeInHierarchy)
+        if (!target.activeInHierarchy)
+        {
+            target = Player.instance.player_Oj_List[Random.Range(0, Player.instance.player_Oj_List.Count)];
+        }
+        else
+        {
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, 0.2f);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

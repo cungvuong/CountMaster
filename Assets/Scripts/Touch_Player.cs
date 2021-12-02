@@ -5,13 +5,27 @@ using TMPro;
 
 public class Touch_Player : MonoBehaviour
 {
+    public static Touch_Player instance;
     public int clone_X;
     public bool cal;
-    public GameObject player;
     //public GameObject cam;
     public GameObject player_Spawn;
     public GameObject box_Left;
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }    
+    }
+
+    private void Start()
+    {
+        player_Spawn = GameObject.FindGameObjectWithTag("point_spawn");
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "player")
@@ -20,7 +34,6 @@ public class Touch_Player : MonoBehaviour
             // neu tra loi dung
             if (GetComponentInChildren<TextMeshPro>().text == transform.parent.GetComponent<Range_Ques>().kq.ToString()) 
             {
-                Debug.Log("win");
                 if (cal)
                 {
                     for (int i = 0; i < Player.instance.player_Oj_List.Count; i++)
@@ -31,7 +44,7 @@ public class Touch_Player : MonoBehaviour
                     {
                         float posx = Random.Range(-1f, 1f);
                         float posz = Random.Range(-1f, 1f);
-                        GameObject x = Instantiate(player, player_Spawn.transform.position + new Vector3(posx, 0f, posz), Quaternion.identity, player_Spawn.transform.parent);
+                        GameObject x = Instantiate(Player.instance.curr_Player, player_Spawn.transform.position + new Vector3(posx, 0f, posz), Quaternion.identity, player_Spawn.transform.parent);
                         Player.instance.player_Oj_List.Add(x);
                     }
                 }
@@ -41,7 +54,7 @@ public class Touch_Player : MonoBehaviour
                     {
                         float posx = Random.Range(-1f, 1f);
                         float posz = Random.Range(-1f, 1f);
-                        GameObject x = Instantiate(player, player_Spawn.transform.position + new Vector3(posx, 0f, posz), Quaternion.identity, player_Spawn.transform.parent);
+                        GameObject x = Instantiate(Player.instance.curr_Player, player_Spawn.transform.position + new Vector3(posx, 0f, posz), Quaternion.identity, player_Spawn.transform.parent);
                         Player.instance.player_Oj_List.Add(x);
                     }
                 }

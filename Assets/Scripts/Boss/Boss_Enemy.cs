@@ -8,7 +8,8 @@ public class Boss_Enemy : Boss
 
     private void Start()
     {
-        this.health = 10;
+        this.alive = true;
+        this.health = 5;
         health_Text.text = health.ToString();
     }
 
@@ -25,5 +26,4 @@ public class Boss_Enemy : Boss
             health_Text.text = this.health.ToString();
         }
     }
-
 }

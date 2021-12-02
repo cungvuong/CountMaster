@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Enemy_Shoot : MonoBehaviour
 {
-    public GameObject target;
+    private GameObject target;
     public GameObject bullet;
     public GameObject point_Shot;
     bool shot = true;
     // Start is called before the first frame update
     void Start()
     {
-        
+        target = GameObject.FindGameObjectWithTag("center");
     }
 
     // Update is called once per frame
