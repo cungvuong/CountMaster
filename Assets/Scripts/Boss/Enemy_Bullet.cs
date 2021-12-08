@@ -21,13 +21,18 @@ public class Enemy_Bullet : MonoBehaviour
 
     void Movement()
     {
-        if (!target.activeInHierarchy)
-        {
-            target = Player.instance.player_Oj_List[Random.Range(0, Player.instance.player_Oj_List.Count)];
-        }
+        if(target != null)
+            if (!target.activeInHierarchy)
+            {
+                target = Player.instance.player_Oj_List[Random.Range(0, Player.instance.player_Oj_List.Count)];
+            }
+            else
+            {
+                transform.position = Vector3.MoveTowards(transform.position, target.transform.position, 0.2f);
+            }
         else
         {
-            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, 0.2f);
+            target = Player.instance.player_Oj_List[Random.Range(0, Player.instance.player_Oj_List.Count)];
         }
     }
 

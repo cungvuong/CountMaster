@@ -18,6 +18,7 @@ public static class Save_Data
         }
         string json = JsonUtility.ToJson(data);
         File.WriteAllText(dir + filename, json);
+        Debug.Log("Saved!");
     }
 
     public static List_Level Load()

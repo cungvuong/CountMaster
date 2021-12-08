@@ -42,20 +42,45 @@ public class Touch_Player : MonoBehaviour
                     }
                     for (int i = 0; i < mount_Clone; i++)
                     {
+                        Pooling_Player.instance.UpDate_Spawn_Player(); // moi lan sinh se set active 1 object moi
+
                         float posx = Random.Range(-1f, 1f);
                         float posz = Random.Range(-1f, 1f);
-                        GameObject x = Instantiate(Player.instance.curr_Player, player_Spawn.transform.position + new Vector3(posx, 0f, posz), Quaternion.identity, player_Spawn.transform.parent);
-                        Player.instance.player_Oj_List.Add(x);
+                        GameObject x = Pooling_Player.instance.GetPooledObject();
+                        if (x != null)
+                        {
+                            x.transform.position = player_Spawn.transform.position + new Vector3(posx, 0f, posz);
+                            x.SetActive(true);
+                            Player.instance.player_Oj_List.Add(x);
+                        }
+                        else
+                        {
+                            // du 200 player
+                            Player.instance.player_Oj_List.Add(Player.instance.curr_Player);
+                        }
                     }
                 }
                 else
                 {
                     for (int i = 0; i < clone_X; i++)
                     {
+                        Pooling_Player.instance.UpDate_Spawn_Player(); // moi lan sinh se set active 1 object moi
+
                         float posx = Random.Range(-1f, 1f);
                         float posz = Random.Range(-1f, 1f);
-                        GameObject x = Instantiate(Player.instance.curr_Player, player_Spawn.transform.position + new Vector3(posx, 0f, posz), Quaternion.identity, player_Spawn.transform.parent);
-                        Player.instance.player_Oj_List.Add(x);
+
+                        GameObject x = Pooling_Player.instance.GetPooledObject();
+                        if (x != null)
+                        {
+                            x.transform.position = player_Spawn.transform.position + new Vector3(posx, 0f, posz);
+                            x.SetActive(true);
+                            Player.instance.player_Oj_List.Add(x);
+                        }
+                        else
+                        {
+                            // du 200 player
+                            Player.instance.player_Oj_List.Add(Player.instance.curr_Player);
+                        }
                     }
                 }
                 box_Left.GetComponent<BoxCollider>().enabled = false;

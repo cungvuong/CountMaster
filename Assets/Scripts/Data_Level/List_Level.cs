@@ -9,7 +9,9 @@ public class List_Level
     public int level_Current; 
     public int mount_Player; // so luong player hien tai
     public int index_Curr; // player dang duoc chon
-
+    public int mount_Gold;
+    public int earn_Gold_Level;
+    
     public List_Level()
     {
         level = null;
@@ -23,5 +25,15 @@ public class List_Level
         level_Current = level_curr;
         mount_Player = mount_Pl;
         index_Curr = index_curr;
+    }
+
+    public void Get_Gold(int gold)
+    {
+        mount_Gold += gold;
+    }
+    public List_Level Next_Level()
+    {
+        level_Current++;
+        return this;
     }
 }

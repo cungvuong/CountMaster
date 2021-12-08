@@ -21,16 +21,17 @@ public class Player : MonoBehaviour
     public static Player instance;
     public Camera cam;
     public bool time_Center;
-    public bool time_Center_Insti;
     public Coroutine time_Center_Check;
     public bool can_Move;
     [HideInInspector]
     public bool startGame;
     public GameObject point_Spawn;
 
-    GameObject[] list_Obj;
+    [HideInInspector]
+    public GameObject[] list_Obj; // list obj khoi dau 9 player
     [HideInInspector]
     public GameObject curr_Player;
+    int dem_So_Lan_Click = 0;
     private void Awake()
     {
         if(instance == null)
@@ -41,27 +42,36 @@ public class Player : MonoBehaviour
         {
             return;
         }
-        player_Oj = GameObject.FindGameObjectsWithTag("player");
-        foreach (GameObject x in player_Oj)
-        {
-            player_Oj_List.Add(x);
-        }
-        int sotang = Save_Data.Load().level_Current + 1;
-        List_Level list = new List_Level(sotang, 1, Save_Data.Load().index_Curr);
-        Save_Data.Save(list);
+        //player_Oj = GameObject.FindGameObjectsWithTag("player");
+        //foreach (GameObject x in player_Oj)
+        //{
+        //    player_Oj_List.Add(x);
+        //}
+        List_Level list = Save_Data.Load(); // lay data hien tai
+        list = list.Next_Level(); // set them 1 level
+        Save_Data.Save(list); // save data.
         point_Spawn = GameObject.FindGameObjectWithTag("point_spawn"); // diem sinh nhan vat
         list_Obj = Resources.LoadAll<GameObject>("Clother_Obj");
 
         curr_Player = list_Obj[Save_Data.Load().index_Curr]; // load ra player tran trc
 
+    }
+
+    private void Start()
+    {
         float posx, posz;
         for (int i = 0; i < Save_Data.Load().mount_Player; i++)
         {
             posx = Random.Range(-1f, 1f);
             posz = Random.Range(-1f, 1f);
-            GameObject x = Instantiate(curr_Player, point_Spawn.transform.position + new Vector3(posx, 0f, posz), curr_Player.transform.rotation, point_Spawn.transform.parent);
-            player_Oj_List.Add(x);
-            mount_Player.text = player_Oj_List.Count.ToString();
+            GameObject x = Pooling_Player.instance.GetPooledObject();
+            if (x != null)
+            {
+                x.SetActive(true);
+                x.transform.position += new Vector3(posx, 0f, posz);
+                player_Oj_List.Add(x);
+                mount_Player.text = player_Oj_List.Count.ToString();
+            }
         }
     }
 
@@ -91,8 +101,15 @@ public class Player : MonoBehaviour
         {
             if (!player_Oj_List[0].GetComponent<Player_Manager>().boss_Attack) // chua danh boss
                 transform.Translate(Vector3.forward * speedZ * Time.deltaTime);
-            if (time_Center)
+            else
             {
+                // xu ly may quay
+                //cam.transform.position = new Vector3(13.3f, 7.7f, 133.6f);
+                //cam.transform.rotation = Quaternion.AngleAxis(-37f, Vector3.up);
+            }
+            if (player_Oj_List.Count !=1) //time_Center
+            {
+                Debug.Log("ep");
                 foreach (GameObject x in player_Oj_List)
                 {
                     x.GetComponent<Player_Manager>().time_Center = true;
@@ -113,6 +130,15 @@ public class Player : MonoBehaviour
             {
                 can_Move = true;
             }
+            if (player_Oj_List[0].GetComponent<Player_Manager>().tru_Attack)
+            {
+                speedZ = 2f;
+            }
+            else
+            {
+                speedZ = 7f;
+            }
+
         }
         else
         {
@@ -121,11 +147,17 @@ public class Player : MonoBehaviour
     } // di chuyen
     public void End_Game()
     {
-        menu_PlayerAgain.SetActive(true);
+        StartCoroutine(Time_Appear());
         menu_Controll.SetActive(false);
         can_Move = false;
         //Debug.Log("Die");
     } // end game
+
+    IEnumerator Time_Appear()
+    {
+        yield return new WaitForSeconds(0.5f);
+        menu_PlayerAgain.SetActive(true);
+    }
 
     public void Start_Addforce()
     {
@@ -162,38 +194,53 @@ public class Player : MonoBehaviour
 
     public GameObject Load_Player_Start(int new_Index)
     {
-        float posx = Random.Range(-1f, 1f);
-        float posz = Random.Range(-1f, 1f);
+        dem_So_Lan_Click++;
         for (int j = 0; j < Player.instance.player_Oj_List.Count; j++) // xet ma sat thap de de ep
         {
             player_Oj_List[j].GetComponent<Rigidbody>().drag = 10f;
         }
 
-        foreach(GameObject destroy in player_Oj_List) // huy het nhung player cu
+        foreach (GameObject destroy in player_Oj_List) // huy het nhung player cu
         {
-            Destroy(destroy);
+            destroy.SetActive(false);
         }
-        player_Oj_List = new List<GameObject>();
-        for(int z=0; z<Save_Data.Load().mount_Player; z++) // instantiate ra nhung player moi
-        {
-            GameObject x = Instantiate(list_Obj[new_Index], point_Spawn.transform.position + new Vector3(posx, 0f, posz), list_Obj[new_Index].transform.rotation, point_Spawn.transform.parent);
-            player_Oj_List.Add(x);
-            Set_Mount_Text();
-        }
+        player_Oj_List = new List<GameObject>(); // khoi tao lai list
+
+        curr_Player = list_Obj[new_Index]; // set lai curr player
+        Pooling_Player.instance.curr_Player_Pool = curr_Player; // set object pooling curr
+        player_Oj_List = Pooling_Player.instance.Set_Data_Again(); // spawn ra cac player moi
+        Set_Mount_Text();
 
         for (int k = 0; k < player_Oj_List.Count; k++) // xet ma sat cao
         {
             player_Oj_List[k].GetComponent<Rigidbody>().drag = 10f;
         }
 
-        curr_Player = list_Obj[new_Index]; // set lai curr player
+        if (dem_So_Lan_Click > 5) // neu chon nv nhieu hon 5 lan
+        {
+            dem_So_Lan_Click = 0;
+            Pooling_Player.instance.Destroy_Player();
+        }
         List_Level list = new List_Level(Save_Data.Load().level_Current, Save_Data.Load().mount_Player, new_Index);
         Save_Data.Save(list); // luu lai NV dang chon
+        
         return list_Obj[new_Index];
     }
     
-    void Set_Mount_Text() // set lai so luong player
+    public void Set_Mount_Text() // set lai so luong player
     {
         mount_Player.text = player_Oj_List.Count.ToString();
+    }
+
+    public void Inscrease_Player_ByGold(int mount) // tang player khi mua cap player
+    {
+        float posx = Random.Range(-1f, 1f);
+        float posz = Random.Range(-1f, 1f);
+        for(int i=0; i< mount; i++)
+        {
+            GameObject x = Instantiate(curr_Player, point_Spawn.transform.position + new Vector3(posx, 0f, posz), curr_Player.transform.rotation, point_Spawn.transform.parent);
+            player_Oj_List.Add(x);
+            Set_Mount_Text();
+        }
     }
 }

@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,7 +13,7 @@ public class Swipe_Touch : MonoBehaviour
     bool can_Touch = true;
     bool right;
     bool left;
-    [Range(1,5f)]
+    [Range(0,100f)]
     public float ran;
 
     public void Drag_Mouse()
@@ -26,11 +26,13 @@ public class Swipe_Touch : MonoBehaviour
         {
             if(pos_Delta.x > 0)
             {
-                Player.instance.gameObject.transform.position = new Vector3(pos_Player.x, pos_Now_Player.y, pos_Now_Player.z) + new Vector3(pos_Delta.x/ran, 0f, 0f);
+                //Player.instance.gameObject.transform.position = new Vector3(pos_Player.x, pos_Now_Player.y, pos_Now_Player.z) + new Vector3(pos_Delta.x, 0f, 0f);
+                Player.instance.gameObject.transform.position = new Vector3(pos_Player.x, pos_Now_Player.y, pos_Now_Player.z) + new Vector3(pos_Delta.x * ran, 0f, 0f);
             }
             else if(pos_Delta.x <0)
             {
-                Player.instance.gameObject.transform.position = new Vector3(pos_Player.x, pos_Now_Player.y, pos_Now_Player.z) + new Vector3(pos_Delta.x/ran, 0f, 0f);
+                //Player.instance.gameObject.transform.position = new Vector3(pos_Player.x, pos_Now_Player.y, pos_Now_Player.z) + new Vector3(pos_Delta.x, 0f, 0f);
+                Player.instance.gameObject.transform.position = new Vector3(pos_Player.x, pos_Now_Player.y, pos_Now_Player.z) + new Vector3(pos_Delta.x * ran, 0f, 0f);
             }
             else
             {

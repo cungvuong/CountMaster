@@ -16,7 +16,6 @@ public class Move : MonoBehaviour
         
     }
 
-
     private void OnCollisionEnter(Collision collision)
     {
         GetComponent<Rigidbody>().AddForce(Vector2.right * 100f, ForceMode.Acceleration);

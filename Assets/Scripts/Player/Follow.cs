@@ -7,8 +7,13 @@ public class Follow : MonoBehaviour
     public GameObject target;
     //public GameObject point;
     //// Update is called once per frame
-    [Range(0f,10f)]
+    [Range(0f,20f)]
     public float z_Cam = 10f;
+    GameObject boss;
+    private void Start()
+    {
+        boss = GameObject.FindGameObjectWithTag("boss");
+    }
 
     private void LateUpdate()
     {
@@ -18,30 +23,34 @@ public class Follow : MonoBehaviour
             {
                 if (!Player.instance.player_Oj_List[0].GetComponent<Player_Manager>().boss_Attack)
                 {
-                    if (transform.position.x < 1.5f || transform.position.x > -1.5f)
-                    {
-                        transform.position = Vector3.Lerp(transform.position, new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z-z_Cam), Time.deltaTime + 0.05f);
-                    }
-                    else
-                    {
-                        if(transform.position.x > 1.5f)
-                            transform.position = Vector3.Lerp(transform.position, new Vector3(1.5f, transform.position.y, target.transform.position.z - z_Cam), Time.deltaTime + 0.015f);
-                        else if(transform.position.x < -1.5f)
-                        {
-                            transform.position = Vector3.Lerp(transform.position, new Vector3(-1.5f, transform.position.y, target.transform.position.z - z_Cam), Time.deltaTime + 0.015f);
-                        }
-                        Debug.Log("follwow");
-                    }
+                    transform.position = Vector3.Lerp(transform.position, new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z-z_Cam), Time.deltaTime + 0.08f);
+                }
+                else
+                {
+                    Vector3 targetPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                    transform.LookAt(targetPos);
                 }
             }
             else
             {
-                return;
+            }
+            if(transform.position.x > 0.7f)
+            {
+                transform.position = new Vector3(0.7f, transform.position.y, transform.position.z);
+            }
+            if (transform.position.x < -0.7f)
+            {
+                transform.position = new Vector3(-0.7f, transform.position.y, transform.position.z);
             }
         }
         else
         {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(0f, transform.position.y, transform.position.z), Time.deltaTime);
+            // xu ly khi dang danh boss
+            Vector3 targetPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            transform.LookAt(targetPos);
+            transform.position = new Vector3(13.5f, 7.7f, 133f);
+            transform.rotation = Quaternion.AngleAxis(-37f, Vector3.up);
+            Debug.Log("Camera Move");
         }
     }
 }

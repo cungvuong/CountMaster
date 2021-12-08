@@ -14,7 +14,11 @@ public class Cuc_Gai_Lan : MonoBehaviour
     void Movement()
     {
         transform.parent.Translate(Vector3.right * speed * Time.deltaTime);
-        if (transform.position.x >= 4.5f || transform.position.x <= -4.5f)
+        if (transform.position.x > 4.5f)
+        {
+            speed = -speed;
+        }
+        if(transform.position.x < -4.5f)
         {
             speed = -speed;
         }

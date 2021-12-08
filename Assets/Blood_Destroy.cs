@@ -4,9 +4,44 @@ using UnityEngine;
 
 public class Blood_Destroy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static Blood_Destroy instance = null;
+    private void Awake()
     {
-        Destroy(gameObject, 1.5f);   
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
+    public GameObject blood;
+    List<GameObject> list = new List<GameObject>();
+
+    private void Start()
+    {
+        for (int i=0; i<10; i++)
+        {
+            GameObject x = Instantiate(blood, transform);
+            x.SetActive(false);
+            list.Add(x);
+            Debug.Log("ok");
+        }
+    }
+
+    public GameObject Spawn_()
+    {
+        for(int i=0; i<list.Count; i++)
+        {
+            if (!list[i].activeInHierarchy)
+            {
+                StartCoroutine(Time_Appear(list[i]));
+                return list[i];
+            }
+        }
+        return null;
+    }
+
+    IEnumerator Time_Appear(GameObject x)
+    {
+        yield return new WaitForSeconds(2f);
+        x.SetActive(false);
     }
 }

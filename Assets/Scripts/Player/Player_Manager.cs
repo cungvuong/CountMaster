@@ -12,7 +12,6 @@ public class Player_Manager : MonoBehaviour
     Vector3 mLookDirection;
     private bool fall_ = false;
     private bool fly = false;
-    private bool real_Exit_Slide = false;
     //private bool touch_Brige = false;
     [HideInInspector]
     public bool boss_Attack;
@@ -46,7 +45,7 @@ public class Player_Manager : MonoBehaviour
         //if(tru.Length!=0)
         //    curr_Tru = tru[0];
     }
-
+     
     private void Update()
     {
         if (boss_Attack)
@@ -66,7 +65,8 @@ public class Player_Manager : MonoBehaviour
         mLookDirection = (center_Point.transform.position - transform.position).normalized;
         if (time_Center)  // time_Center
         {
-            rb.AddForce(mLookDirection * 60f, ForceMode.Force);
+            if(!fly && !fall_)
+                rb.AddForce(mLookDirection * 40f, ForceMode.Force);
         }
         if (fall_) // nhan vat ha canh'
         {
@@ -74,8 +74,7 @@ public class Player_Manager : MonoBehaviour
         }
         if (fly) // nv bay len 
         {
-            transform.Translate(Vector3.up * moveSpeed * 1.3f * Time.deltaTime);
-            transform.Translate(Vector3.forward * moveSpeed * 1.5f * Time.deltaTime);
+            transform.Translate(Vector3.up * moveSpeed * 1.2f * Time.deltaTime);
         }
         Attack_Tru();
         if (boss.GetComponent<Boss_Manager>().alive) // khi boss con song
@@ -104,9 +103,8 @@ public class Player_Manager : MonoBehaviour
                 {
                     Vector3 targetPos = new Vector3(enemy.transform.position.x, transform.position.y, enemy.transform.position.z);
                     transform.LookAt(targetPos);
-                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(enemy.transform.position.x, 1f, enemy.transform.position.z), 0.1f);
+                    transform.position = Vector3.MoveTowards(new Vector3(transform.position.x, 0.25f, transform.position.z), new Vector3(enemy.transform.position.x, 1f, enemy.transform.position.z), 0.1f);
                     GetComponent<Animator>().Play("Attack");
-                    Debug.Log("attack");
                 }
                 else
                 {
@@ -122,9 +120,8 @@ public class Player_Manager : MonoBehaviour
                 {
                     Vector3 targetPos = new Vector3(enemy.transform.position.x, transform.position.y, enemy.transform.position.z);
                     transform.LookAt(targetPos);
-                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(enemy.transform.position.x, 1f, enemy.transform.position.z), 0.1f);
+                    transform.position = Vector3.MoveTowards(new Vector3(transform.position.x, 0.25f, transform.position.z), new Vector3(enemy.transform.position.x, 1f, enemy.transform.position.z), 0.1f);
                     GetComponent<Animator>().Play("Attack");
-                    Debug.Log("attack");
                 }
                 else
                 {
@@ -145,11 +142,19 @@ public class Player_Manager : MonoBehaviour
         {
             foreach(GameObject x in tru)
             {
-                if (Mathf.Abs((x.transform.position - center_Point.transform.position).magnitude) <= 8f)
+                if(x.gameObject.GetComponent<Boss_Enemy>().alive)
+                    if (Mathf.Abs((x.transform.position - center_Point.transform.position).magnitude) <= 8f)
+                    {
+                        Debug.Log("attack tru");
+                        curr_Tru = x;
+                        tru_Attack = true;
+                        //Player.instance.can_Move = false;
+                    }
+                    else { }
+                else
                 {
-                    Debug.Log("attack tru");
-                    curr_Tru = x;
-                    tru_Attack = true;
+                    tru_Attack = false;
+                    Player.instance.can_Move = true;
                 }
             }
         }
@@ -161,8 +166,6 @@ public class Player_Manager : MonoBehaviour
         {
             Player.instance.player_Oj_List.Remove(this.gameObject);
             Die();
-            Player.instance.Stop_Corotine_Addforce(); // dung corotin trc
-            Player.instance.Start_Addforce();
         }
         if (collision.gameObject.tag == "die_zone")
         {
@@ -172,8 +175,8 @@ public class Player_Manager : MonoBehaviour
         if (collision.gameObject.tag == "boss")
         {
             Player.instance.player_Oj_List.Remove(this.gameObject);
-            Die();
-            if(Player.instance.player_Oj_List.Count == 0) // end game
+            Die_When_Attack_Boss();
+            if (Player.instance.player_Oj_List.Count == 0) // end game
                 Player.instance.End_Game();
         }
         if (collision.gameObject.tag == "tru")
@@ -188,30 +191,30 @@ public class Player_Manager : MonoBehaviour
         {
             fall_ = false;
         }
-        if(collision.gameObject.tag == "slide")
-        {
-            //touch_Brige = true;
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "exit_slide")
-        {
-            real_Exit_Slide = true;
-        }
     }
 
     public void Die()
     {
         Player.instance.mount_Player.text = Player.instance.player_Oj_List.Count.ToString();
+
+        //Instantiate(blood, transform.position + new Vector3(0f, 0.1f, 0f), Quaternion.Euler(90f, 0f, 0f));
+        GameObject x = Blood_Destroy.instance.Spawn_();
+        if (x != null)
+        {
+            x.transform.position = transform.position + new Vector3(0f, 0.1f, 0f);
+            x.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
+            x.SetActive(true);
+        }
+        gameObject.SetActive(false);
+    }
+
+    void Die_When_Attack_Boss()
+    {
+        Player.instance.mount_Player.text = Player.instance.player_Oj_List.Count.ToString();
         //Instantiate(blood, transform.position + new Vector3(0f, 0.5f, 0f), Quaternion.identity);
-        Instantiate(blood, transform.position + new Vector3(0f, 0.1f, 0f), Quaternion.Euler(90f, 0f, 0f));
+        //Instantiate(blood, transform.position + new Vector3(0f, 0.1f, 0f), Quaternion.Euler(90f, 0f, 0f));
 
-        Stop_Corotine_Die();
-        StartCoroutine(Delay_Center_Die());
-
-        Destroy(this.gameObject);
+        StartCoroutine(Start_Die_Ani());
     }
 
     private void OnCollisionStay(Collision collision)  // check len cau
@@ -222,43 +225,28 @@ public class Player_Manager : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit(Collision collision) // check ra khoi cau
+    private void OnTriggerExit(Collider other)
     {
-        if (collision.gameObject.tag == "slide")
-        {
-            if (real_Exit_Slide)
-            {
-                StartCoroutine(Time_Exit_Slide());
-                StartCoroutine(Time_Center_Exit_Slide());
-            }
-        }
+        StartCoroutine(Time_Exit_Slide());
     }
 
     IEnumerator Time_Exit_Slide()
     {
         fly = true;
-        yield return new WaitForSeconds(0.2f);
-        fall_ = true;
-        fly = false;
+        if (gameObject.activeInHierarchy)
+        {
+            yield return new WaitForSeconds(0.2f);
+            if (gameObject.activeInHierarchy)
+            {
+                fall_ = true;
+                fly = false;
+            }
+        }
     }
 
-    IEnumerator Time_Center_Exit_Slide()
+    IEnumerator Start_Die_Ani()
     {
-        yield return new WaitForSeconds(1f);
-        Player.instance.Stop_Corotine_Addforce(); // dung corotin trc
-        Player.instance.Start_Addforce();
-    }
-
-    IEnumerator Delay_Center_Die() // sau khi chet se ep doi hinh
-    {
-        yield return new WaitForSeconds(1f);
-        Player.instance.Stop_Corotine_Addforce();
-        Player.instance.Start_Addforce();
-    }
-
-    void Stop_Corotine_Die()
-    {
-        Coroutine coroutine = StartCoroutine(Delay_Center_Die());
-        StopCoroutine(coroutine);
+        yield return new WaitForSeconds(0.5f);
+        gameObject.SetActive(false);
     }
 }

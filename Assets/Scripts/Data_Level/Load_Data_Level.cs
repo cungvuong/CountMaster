@@ -16,7 +16,6 @@ public class Load_Data_Level : MonoBehaviour
         list = Save_Data.Load();
         text_lv.text = "Level " + list.level_Current.ToString();
     }
-
     public List_Level list = new List_Level();
 
 }

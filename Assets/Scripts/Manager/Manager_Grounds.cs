@@ -17,6 +17,7 @@ public class Manager_Grounds : MonoBehaviour
     public GameObject[] things_Map1_2;
     //public GameObject things_Clone_Ques;
     public GameObject[] things_Clone_Ques_Trap;
+    public GameObject mountain; // nui'
     float[] range_Trap_Dis = { 15f, 40f, 50f, 60f, 70f, 95f, 105f, 115f, 125f, 135f};
     //
     void Start()
@@ -49,8 +50,8 @@ public class Manager_Grounds : MonoBehaviour
         {
             int k = 1;
             Instantiate(gr_co_cau, transform.position, gr_co_cau.transform.rotation, transform);
-            Instantiate(gr_co_cau, transform.position + new Vector3(0f, 0f, 55f * k), gr_co_cau.transform.rotation, transform); k++;
-            GameObject late = Instantiate(gr_ko_cau, transform.position + new Vector3(0f, 0f, 55f * k), gr_ko_cau.transform.rotation, transform); k++;
+            Instantiate(gr_co_cau, transform.position + new Vector3(0f, 0f, 53f * k), gr_co_cau.transform.rotation, transform); k++;
+            GameObject late = Instantiate(gr_ko_cau, transform.position + new Vector3(0f, 0f, 53f * k), gr_ko_cau.transform.rotation, transform); k++;
             Instantiate(gr_ko_cau, late.transform.position + new Vector3(0f, 0f, 50f), gr_ko_cau.transform.rotation, transform); k++;
         }
         // clone Trap map 1.1
@@ -74,6 +75,18 @@ public class Manager_Grounds : MonoBehaviour
             range = Random.Range(0, things_Map1_2.Length);
             Instantiate(things_Map1_2[range], things_Map1_2[range].transform.position + new Vector3(0f, 0f, range_Trap_Dis[trap_Dis]), things_Map1_2[range].transform.rotation, things_Parent.transform);
             trap_Dis++;
+        }
+        Range_Mountain();
+    }
+
+    void Range_Mountain()
+    {
+        for(int i=0; i<200; i++)
+        {
+            float x = Random.Range(-40f, 40f);
+            float z = Random.Range(0f, 200f);
+            float y = Random.Range(-7.5f, -5f);
+            Instantiate(mountain, transform.position + new Vector3(x, -7.5f, z), Quaternion.identity, things_Parent.transform);
         }
     }
 }

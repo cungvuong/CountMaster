@@ -9,7 +9,7 @@ public class Boss_Enemy : Boss
     private void Start()
     {
         this.alive = true;
-        this.health = 5;
+        this.health = 10;
         health_Text.text = health.ToString();
     }
 

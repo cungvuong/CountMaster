@@ -95,8 +95,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.08134766, y: 0.0025, z: 0.09999999}
-  m_Center: {x: 0.0025131474, y: 0, z: 0}
+  m_Size: {x: 0.1039133, y: 0.01, z: 0.09978917}
+  m_Center: {x: 0, y: -0.005, z: 0.00028102877}
 --- !u!1 &7420786536729516536
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,7 +106,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3210565607350745600}
-  - component: {fileID: 7135967803308987688}
+  - component: {fileID: 8935147244273727528}
   m_Layer: 0
   m_Name: Die_Zone
   m_TagString: die_zone
@@ -128,7 +128,7 @@ Transform:
   m_Father: {fileID: 3487378619781860375}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &7135967803308987688
+--- !u!65 &8935147244273727528
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,8 +139,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 11.908269, y: 1, z: 4.811447}
-  m_Center: {x: -0.05457735, y: 0, z: -1.9057236}
+  m_Size: {x: 11.908269, y: 1.7525594, z: 3.01256}
+  m_Center: {x: -0.05457735, y: 0.37627983, z: -2.8051672}
 --- !u!1001 &6820759461453222729
 PrefabInstance:
   m_ObjectHideFlags: 0
