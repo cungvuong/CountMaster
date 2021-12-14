@@ -7,7 +7,7 @@ public class Manager_UI : MonoBehaviour
 {
     public GameObject UI_Clother;
     public GameObject Start_UI;
-    public GameObject Menu_Controll;
+    public GameObject Menu_Control;
     public Text level_Txt;
     public Text gold_Txt;
     public Text diamond_Txt;
@@ -22,14 +22,14 @@ public class Manager_UI : MonoBehaviour
     public void Open_Clother_UI()
     {
         UI_Clother.SetActive(true);
+        Menu_Control.SetActive(false);
         Start_UI.SetActive(false);
-        Menu_Controll.SetActive(false);
     }
 
     public void Close_Clother_UI()
     {
         UI_Clother.SetActive(false);
-        Menu_Controll.SetActive(true);
+        Menu_Control.SetActive(true);
         Start_UI.SetActive(true);
     }
 

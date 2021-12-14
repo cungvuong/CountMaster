@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4970551963084321323
 Transform:
@@ -68,7 +68,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4001207364161832931
 Transform:
@@ -148,7 +148,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8436771648013573750
 Transform:
@@ -201,7 +201,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1955549233136344331
 Transform:
@@ -282,7 +282,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8922286412822694200
 Transform:
@@ -362,7 +362,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4429581735150054497
 Transform:
@@ -414,7 +414,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3947642260542094058
 Transform:
@@ -465,7 +465,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5746814712377144090
 Transform:
@@ -498,13 +498,13 @@ GameObject:
   - component: {fileID: 9055160805835736361}
   - component: {fileID: 4359963408828586147}
   - component: {fileID: 7372138792355922049}
-  - component: {fileID: 1219589791774023690}
+  - component: {fileID: 3702190878241488048}
   m_Layer: 0
   m_Name: pCylinder4
   m_TagString: Box_Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &9055160805835736361
 Transform:
@@ -569,8 +569,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1219589791774023690
-MeshCollider:
+--- !u!65 &3702190878241488048
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -579,10 +579,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8211372540250625004, guid: 5c80746731079a7418409367ef2c070b, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.038776573, y: 0.0016000001, z: 0.03956447}
+  m_Center: {x: -0.0008132319, y: 0, z: -0.0005978545}
 --- !u!1 &6154284697041918459
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,13 +593,13 @@ GameObject:
   - component: {fileID: 8918674905306844390}
   - component: {fileID: 2933400834563313128}
   - component: {fileID: 3968471071996304146}
-  - component: {fileID: 555493367159343893}
+  - component: {fileID: 6926890828769698864}
   m_Layer: 0
   m_Name: pCylinder4
   m_TagString: Box_Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8918674905306844390
 Transform:
@@ -665,8 +664,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &555493367159343893
-MeshCollider:
+--- !u!65 &6926890828769698864
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -675,10 +674,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8211372540250625004, guid: 5c80746731079a7418409367ef2c070b, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.038776573, y: 0.0016000001, z: 0.03956447}
+  m_Center: {x: -0.0008132319, y: 0, z: -0.0005978545}
 --- !u!1 &6242310314244456149
 GameObject:
   m_ObjectHideFlags: 0
@@ -695,7 +693,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6337850611925336059
 Transform:
@@ -776,7 +774,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &450035150897112453
 Transform:
@@ -852,13 +850,13 @@ GameObject:
   - component: {fileID: 2072940386350561252}
   - component: {fileID: 5692506346089248694}
   - component: {fileID: 2932075369999155878}
-  - component: {fileID: 1402259600864310706}
+  - component: {fileID: 4841831275720024715}
   m_Layer: 0
   m_Name: pCylinder4
   m_TagString: Box_Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2072940386350561252
 Transform:
@@ -923,8 +921,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1402259600864310706
-MeshCollider:
+--- !u!65 &4841831275720024715
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -933,10 +931,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8211372540250625004, guid: 5c80746731079a7418409367ef2c070b, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.038776573, y: 0.0016000001, z: 0.03956447}
+  m_Center: {x: -0.0008132319, y: 0, z: -0.0005978545}
 --- !u!1 &7530916236166960176
 GameObject:
   m_ObjectHideFlags: 0
@@ -952,7 +949,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5289196570151606152
 Transform:
@@ -1004,7 +1001,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1481631492345931456
 Transform:
@@ -1057,7 +1054,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5522324141771176306
 Transform:
@@ -1133,13 +1130,13 @@ GameObject:
   - component: {fileID: 6189414960194032731}
   - component: {fileID: 2442680091078033289}
   - component: {fileID: 2649824498084164056}
-  - component: {fileID: 7295005666370509209}
+  - component: {fileID: 6978904317975577962}
   m_Layer: 0
   m_Name: pCylinder4
   m_TagString: Box_Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6189414960194032731
 Transform:
@@ -1204,8 +1201,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7295005666370509209
-MeshCollider:
+--- !u!65 &6978904317975577962
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1214,10 +1211,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8211372540250625004, guid: 5c80746731079a7418409367ef2c070b, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.038776573, y: 0.0016000001, z: 0.03956447}
+  m_Center: {x: -0.0008132319, y: 0, z: -0.0005978545}
 --- !u!1 &8270039966455695376
 GameObject:
   m_ObjectHideFlags: 0
@@ -1229,13 +1225,13 @@ GameObject:
   - component: {fileID: 903316592068385990}
   - component: {fileID: 6323319570904826821}
   - component: {fileID: 8975552296897832953}
-  - component: {fileID: 4545537699985691320}
+  - component: {fileID: 1606125399797396394}
   m_Layer: 0
   m_Name: pCylinder4
   m_TagString: Box_Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &903316592068385990
 Transform:
@@ -1300,8 +1296,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4545537699985691320
-MeshCollider:
+--- !u!65 &1606125399797396394
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1310,10 +1306,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8211372540250625004, guid: 5c80746731079a7418409367ef2c070b, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.038776573, y: 0.0016000001, z: 0.03956447}
+  m_Center: {x: -0.0008132319, y: 0, z: -0.0005978545}
 --- !u!1 &8797402405300299460
 GameObject:
   m_ObjectHideFlags: 0
@@ -1325,13 +1320,13 @@ GameObject:
   - component: {fileID: 3297088833856186144}
   - component: {fileID: 1263589248998657545}
   - component: {fileID: 691136294988419193}
-  - component: {fileID: 3649660062913647398}
+  - component: {fileID: 3090926854503757705}
   m_Layer: 0
   m_Name: pCylinder4
   m_TagString: Box_Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3297088833856186144
 Transform:
@@ -1396,8 +1391,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3649660062913647398
-MeshCollider:
+--- !u!65 &3090926854503757705
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1406,7 +1401,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8211372540250625004, guid: 5c80746731079a7418409367ef2c070b, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.038776573, y: 0.0016000001, z: 0.03956447}
+  m_Center: {x: -0.0008132319, y: 0, z: -0.0005978545}

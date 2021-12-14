@@ -5,6 +5,7 @@ using UnityEngine;
 public class Cuc_Gai_Lan : MonoBehaviour
 {
     public float speed = 10f;
+    bool check_Change;
     // Update is called once per frame
     void Update()
     {
@@ -14,14 +15,26 @@ public class Cuc_Gai_Lan : MonoBehaviour
     void Movement()
     {
         transform.parent.Translate(Vector3.right * speed * Time.deltaTime);
-        if (transform.position.x > 4.5f)
+        if (!check_Change)
         {
-            speed = -speed;
+            if (transform.position.x > 4.5f)
+            {
+                speed = -speed;
+                StartCoroutine(Time_Check());
+            }
+            if(transform.position.x < -4.5f)
+            {
+                speed = -speed;
+                StartCoroutine(Time_Check());
+            }
         }
-        if(transform.position.x < -4.5f)
-        {
-            speed = -speed;
-        }
-        transform.RotateAround(transform.position, Vector3.forward, -speed);
+        transform.RotateAround(transform.position, Vector3.forward, -speed * 5f);
+    }
+
+    IEnumerator Time_Check()
+    {
+        check_Change = true;
+        yield return new WaitForSeconds(2f);
+        check_Change = false;
     }
 }

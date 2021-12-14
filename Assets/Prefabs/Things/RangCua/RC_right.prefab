@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &9220067066997651051
 Transform:
@@ -68,7 +68,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1564734431234165636
 Transform:
@@ -144,13 +144,13 @@ GameObject:
   - component: {fileID: 8159934145770309576}
   - component: {fileID: 7521852794331826335}
   - component: {fileID: 867207969016246595}
-  - component: {fileID: 7272908325253634788}
+  - component: {fileID: 2373289700248970398}
   m_Layer: 0
   m_Name: pCylinder4
   m_TagString: Box_Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8159934145770309576
 Transform:
@@ -215,8 +215,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7272908325253634788
-MeshCollider:
+--- !u!65 &2373289700248970398
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -225,7 +225,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8211372540250625004, guid: 5c80746731079a7418409367ef2c070b, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.038776573, y: 0.0016000001, z: 0.03956447}
+  m_Center: {x: -0.0008132319, y: 0, z: -0.0005978545}

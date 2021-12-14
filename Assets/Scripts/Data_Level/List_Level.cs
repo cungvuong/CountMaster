@@ -16,6 +16,8 @@ public class List_Level
     {
         level = null;
         level_Current = 1;
+        mount_Player = 1;
+        mount_Gold = 0;
     }
 
     public List_Level(int level_curr, int mount_Pl, int index_curr)

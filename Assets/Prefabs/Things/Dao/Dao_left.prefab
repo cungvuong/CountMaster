@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7678705141362722109
 Transform:
@@ -92,13 +92,13 @@ GameObject:
   - component: {fileID: 1911883649835275529}
   - component: {fileID: 475908262004267092}
   - component: {fileID: 3432181166465491254}
-  - component: {fileID: 5700444792821387097}
+  - component: {fileID: 397693655758986014}
   m_Layer: 0
   m_Name: polySurface2
   m_TagString: Box_Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1911883649835275529
 Transform:
@@ -163,8 +163,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5700444792821387097
-MeshCollider:
+--- !u!65 &397693655758986014
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -173,10 +173,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5597002278806442958, guid: 7a136fcd52a2b364386a899cc8dde6f1, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.0042654527, y: 0.028472485, z: 0.110000044}
+  m_Center: {x: 0.00012783319, y: -0.0062362473, z: -0.050000034}
 --- !u!1 &9024759855732106151
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,10 +188,10 @@ GameObject:
   - component: {fileID: 6011650522889043613}
   m_Layer: 0
   m_Name: Dao_left
-  m_TagString: Untagged
+  m_TagString: dao
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2632127480072753393
 Transform:

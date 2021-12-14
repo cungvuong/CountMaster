@@ -16,6 +16,12 @@ TagManager:
   - point_spawn
   - exit_slide
   - die_zone
+  - clone_ques
+  - free_clone
+  - free
+  - dao
+  - bua
+  - super_trap
   layers:
   - Default
   - TransparentFX

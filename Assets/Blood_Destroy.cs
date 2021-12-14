@@ -22,7 +22,6 @@ public class Blood_Destroy : MonoBehaviour
             GameObject x = Instantiate(blood, transform);
             x.SetActive(false);
             list.Add(x);
-            Debug.Log("ok");
         }
     }
 

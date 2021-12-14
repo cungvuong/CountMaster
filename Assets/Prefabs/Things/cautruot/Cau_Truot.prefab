@@ -15,7 +15,7 @@ GameObject:
   m_TagString: exit_slide
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6248722397519145646
 Transform:
@@ -61,7 +61,7 @@ GameObject:
   m_TagString: slide
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4340990750881914199
 Transform:

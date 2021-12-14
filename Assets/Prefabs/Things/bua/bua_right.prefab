@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 5331009828359551440}
   - component: {fileID: 4900471505409149886}
   - component: {fileID: 6282321546230689409}
-  - component: {fileID: 7855528411218712830}
+  - component: {fileID: 6288863156229274348}
   m_Layer: 0
   m_Name: pCylinder8
   m_TagString: Box_Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5331009828359551440
 Transform:
@@ -82,8 +82,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7855528411218712830
-MeshCollider:
+--- !u!65 &6288863156229274348
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -92,10 +92,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -364044783463932134, guid: db08e426b2697e0489dcbef62f109dbc, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.027588757, y: 0.026470792, z: 0.070000015}
+  m_Center: {x: 0.00031031604, y: 0.0656338, z: 0.000000003055787}
 --- !u!1 &7045064309938005419
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,10 +107,10 @@ GameObject:
   - component: {fileID: 7855528411218712831}
   m_Layer: 0
   m_Name: bua_right
-  m_TagString: Untagged
+  m_TagString: bua
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7678294339706126097
 Transform:
@@ -164,7 +163,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5923317821117012848
 Transform:
