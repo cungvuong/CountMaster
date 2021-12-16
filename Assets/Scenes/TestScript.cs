@@ -35,4 +35,36 @@ public class TestScript : MonoBehaviour
             }
         }
     }
+
+    void Test()
+    {
+        float khoangcachx = 0.4f;
+        float khoangcachy = 0.4f;
+        int dotang = 10;
+        int demvong = 0;
+        // player can tim la con thu index +1;
+        int player_Index_Set = 0;
+        //
+        for (int i = 1; i <= dotang; i++)
+        {
+            float angle = i * (2 * 3.14159f / (dotang));
+            float x_ = Mathf.Cos(angle) * (khoangcachx);
+            float y_ = Mathf.Sin(angle) * (khoangcachy);
+            //
+
+            if (i == dotang)
+            {
+                dotang += 10;
+                khoangcachx += 0.2f;
+                khoangcachy += 0.2f;
+                i = 0;
+                demvong++;
+            }
+            if (demvong == 8)
+            {
+                break;
+            }
+            player_Index_Set++;
+        }
+    }
 }

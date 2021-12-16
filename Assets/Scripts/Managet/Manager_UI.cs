@@ -31,6 +31,7 @@ public class Manager_UI : MonoBehaviour
         UI_Clother.SetActive(false);
         Menu_Control.SetActive(true);
         Start_UI.SetActive(true);
+        Pooling_Player.instance.Set_NV_After_Back();
     }
 
 }

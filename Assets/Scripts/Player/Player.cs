@@ -43,8 +43,8 @@ public class Player : MonoBehaviour
         }
         
         point_Spawn = GameObject.FindGameObjectWithTag("point_spawn"); // diem sinh nhan vat
-
         boss = GameObject.FindGameObjectWithTag("boss");
+        time_Center = true;
     }
 
     void Update()
@@ -65,9 +65,6 @@ public class Player : MonoBehaviour
                 Movement();
             }
         }
-        else
-        {
-        }
     }
 
     void Movement()
@@ -76,29 +73,15 @@ public class Player : MonoBehaviour
         {
             if (!player_Oj_List[0].GetComponent<Player_Manager>().boss_Attack) // chua danh boss
                 transform.Translate(Vector3.forward * speedZ * Time.deltaTime);
-            else
-            {
-                // xu ly may quay
 
-            }
-            if (player_Oj_List.Count !=1) //time_Center
-            {
-                // dang choi game
-            }
-            else
-            {
-                foreach (GameObject x in player_Oj_List)
-                {
-                    x.GetComponent<Player_Manager>().time_Center = false;
-                }
-            }
             if (player_Oj_List[0].GetComponent<Player_Manager>().boss_Attack)
             {
                 can_Move = false;
             }
             if (player_Oj_List[0].GetComponent<Player_Manager>().tru_Attack)
             {
-                speedZ = 2f;
+                speedZ = 3f;
+                can_Move = false;
             }
             else
             {
@@ -114,13 +97,28 @@ public class Player : MonoBehaviour
             StartCoroutine(Time_Win_Game());
         }
     } // di chuyen
+    
+    public void Start_AddForce()
+    {
+        StartCoroutine(AddForce_All_Player());
+    }
+    public IEnumerator AddForce_All_Player()
+    {
+        time_Center = false;
+        yield return new WaitForSeconds(1.8f);
+        foreach (GameObject x in player_Oj_List)
+        {
+            x.GetComponent<Player_Manager>().Corrotine_Center_Force(0.8f);
+        }
+        time_Center = true;
+    }
 
-    public void End_Game()
+    public void End_Game() // end game
     {
         StartCoroutine(Time_Appear());
         menu_Controll.SetActive(false);
         can_Move = false;
-    } // end game
+    } 
 
     public void Reset_Game_Init()
     {
@@ -142,26 +140,6 @@ public class Player : MonoBehaviour
         menu_PlayerAgain.SetActive(true);
     }
 
-    public void Start_Addforce()
-    {
-        time_Center_Check = StartCoroutine(Time_Center());
-    } // nhan vat ep gan nhau
-
-    public void Stop_Corotine_Addforce() // nhan vat ep gan nhau
-    {
-        if(time_Center_Check != null)
-        {
-            StopCoroutine(time_Center_Check);
-        }
-    } 
-
-    IEnumerator Time_Center()
-    {
-        time_Center = true;
-        yield return new WaitForSeconds(1f);
-        time_Center = false;
-    }
-
     public void StartGame()  // touch to play
     {
         startGame = true;
@@ -172,9 +150,10 @@ public class Player : MonoBehaviour
 
     public void Load_Player_Start(int index)
     {
+        int curr_Index = Save_Data.Load().index_Curr; // load index trc do
         List_Level list = new List_Level(Save_Data.Load().level_Current, Save_Data.Load().mount_Player, index);
         Save_Data.Save(list); // luu lai NV dang chon
-        Pooling_Player.instance.Change_Player();
+        Pooling_Player.instance.Change_Player(curr_Index);
     }
     
     public void Set_Mount_Text() // set lai so luong player
@@ -184,14 +163,14 @@ public class Player : MonoBehaviour
 
     public void Inscrease_Player_ByGold(int mount) // tang player khi mua cap player
     {
-        float posx = Random.Range(-1f, 1f);
-        float posz = Random.Range(-1f, 1f);
-        for(int i=0; i< mount; i++)
+        GameObject x = Pooling_Player.instance.GetPooledObject();
+        if (x != null)
         {
-            GameObject x = Instantiate(curr_Player, point_Spawn.transform.position + new Vector3(posx, 0f, posz), curr_Player.transform.rotation, point_Spawn.transform.parent);
-            player_Oj_List.Add(x);
-            Pooling_Player.instance.list_Obj.Add(x);
-            Set_Mount_Text();
+            Player.instance.player_Oj_List.Add(x);
+            x.transform.localPosition = Pooling_Player.instance.Get_Pos(Player.instance.player_Oj_List.Count);
+            x.transform.rotation = Quaternion.identity;
+            x.SetActive(true);
         }
+        Set_Mount_Text();
     }
 }

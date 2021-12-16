@@ -16,10 +16,4 @@ public class Mn_Ui_Lv : MonoBehaviour
             list_Image_Lv[i].color = Color.red;
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

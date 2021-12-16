@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 7521852794331826335}
   - component: {fileID: 867207969016246595}
   - component: {fileID: 978481741309942643}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCylinder4
   m_TagString: Box_Trap
   m_Icon: {fileID: 0}

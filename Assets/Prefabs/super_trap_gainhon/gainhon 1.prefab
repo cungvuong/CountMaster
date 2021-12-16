@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 701811211087728618}
   - component: {fileID: 4472793516057706575}
   - component: {fileID: 1870816048255251589}
-  - component: {fileID: 5840283774683091374}
-  m_Layer: 0
+  - component: {fileID: 8182905949730796959}
+  m_Layer: 6
   m_Name: gainhon 1
   m_TagString: Box_Trap
   m_Icon: {fileID: 0}
@@ -104,8 +104,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5840283774683091374
-MeshCollider:
+--- !u!65 &8182905949730796959
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -114,10 +114,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7293461586997374095, guid: 729f156aa043eb9448b386bc0c3b7459, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.41741925, y: 0.038657445, z: 0.13860181}
+  m_Center: {x: -0.07852812, y: 0, z: -0.055017438}
 --- !u!1 &1011105545991002022
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,7 +128,6 @@ GameObject:
   - component: {fileID: 5140310418091187718}
   - component: {fileID: 8543041677921409012}
   - component: {fileID: 6238972493580246039}
-  - component: {fileID: 7646581657968444481}
   m_Layer: 0
   m_Name: gainhon (18)
   m_TagString: Box_Trap
@@ -200,20 +198,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7646581657968444481
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1011105545991002022}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7293461586997374095, guid: 729f156aa043eb9448b386bc0c3b7459, type: 3}
 --- !u!1 &1036274795205228663
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,7 +209,6 @@ GameObject:
   - component: {fileID: 3257171071078933786}
   - component: {fileID: 8828892077977698294}
   - component: {fileID: 8593133939889271885}
-  - component: {fileID: 8362990565681135524}
   m_Layer: 0
   m_Name: gainhon (10)
   m_TagString: Box_Trap
@@ -296,20 +279,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8362990565681135524
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1036274795205228663}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7293461586997374095, guid: 729f156aa043eb9448b386bc0c3b7459, type: 3}
 --- !u!1 &1728665580639845914
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,7 +290,6 @@ GameObject:
   - component: {fileID: 6138147414909464315}
   - component: {fileID: 615146300632225000}
   - component: {fileID: 3725216704487329440}
-  - component: {fileID: 5555643413779853920}
   m_Layer: 0
   m_Name: gainhon (12)
   m_TagString: Box_Trap
@@ -392,20 +360,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5555643413779853920
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1728665580639845914}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7293461586997374095, guid: 729f156aa043eb9448b386bc0c3b7459, type: 3}
 --- !u!1 &1849122430575368819
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,7 +371,6 @@ GameObject:
   - component: {fileID: 7864158176781327932}
   - component: {fileID: 5353446454570286423}
   - component: {fileID: 4412152115227282525}
-  - component: {fileID: 8313144818350142675}
   m_Layer: 0
   m_Name: gainhon (16)
   m_TagString: Box_Trap
@@ -488,20 +441,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8313144818350142675
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1849122430575368819}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7293461586997374095, guid: 729f156aa043eb9448b386bc0c3b7459, type: 3}
 --- !u!1 &3114915968535223714
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,7 +452,6 @@ GameObject:
   - component: {fileID: 8427827136019976969}
   - component: {fileID: 6242182240727019031}
   - component: {fileID: 3504978801836586144}
-  - component: {fileID: 4589286029343150883}
   m_Layer: 0
   m_Name: gainhon (9)
   m_TagString: Box_Trap
@@ -584,20 +522,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4589286029343150883
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3114915968535223714}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7293461586997374095, guid: 729f156aa043eb9448b386bc0c3b7459, type: 3}
 --- !u!1 &3553490497229170018
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,7 +533,6 @@ GameObject:
   - component: {fileID: 1726102337247569993}
   - component: {fileID: 306042523127076061}
   - component: {fileID: 1162311055912286034}
-  - component: {fileID: 4046590619977931486}
   m_Layer: 0
   m_Name: gainhon (2)
   m_TagString: Box_Trap
@@ -680,20 +603,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4046590619977931486
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3553490497229170018}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7293461586997374095, guid: 729f156aa043eb9448b386bc0c3b7459, type: 3}
 --- !u!1 &3966007676412662429
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,7 +614,6 @@ GameObject:
   - component: {fileID: 472540180564824108}
   - component: {fileID: 283787902197286158}
   - component: {fileID: 2206109164143420503}
-  - component: {fileID: 3084528548923572157}
   m_Layer: 0
   m_Name: gainhon (15)
   m_TagString: Box_Trap
@@ -776,20 +684,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3084528548923572157
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3966007676412662429}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7293461586997374095, guid: 729f156aa043eb9448b386bc0c3b7459, type: 3}
 --- !u!1 &4027229774645023497
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,7 +695,6 @@ GameObject:
   - component: {fileID: 2047481316133462430}
   - component: {fileID: 2264164434832812785}
   - component: {fileID: 9188927281090543698}
-  - component: {fileID: 1768737387592302410}
   m_Layer: 0
   m_Name: gainhon (11)
   m_TagString: Box_Trap
@@ -872,20 +765,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1768737387592302410
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4027229774645023497}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7293461586997374095, guid: 729f156aa043eb9448b386bc0c3b7459, type: 3}
 --- !u!1 &4351993483046069652
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,7 +776,6 @@ GameObject:
   - component: {fileID: 6977716998923449539}
   - component: {fileID: 1108854980957806535}
   - component: {fileID: 2402396051352572415}
-  - component: {fileID: 7372815563844070427}
   m_Layer: 0
   m_Name: gainhon (7)
   m_TagString: Box_Trap
@@ -968,20 +846,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7372815563844070427
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4351993483046069652}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7293461586997374095, guid: 729f156aa043eb9448b386bc0c3b7459, type: 3}
 --- !u!1 &5011279526210125276
 GameObject:
   m_ObjectHideFlags: 0
@@ -993,7 +857,6 @@ GameObject:
   - component: {fileID: 5809955974013440704}
   - component: {fileID: 2236236046390228278}
   - component: {fileID: 6024479359747138670}
-  - component: {fileID: 6382180047102962193}
   m_Layer: 0
   m_Name: gainhon
   m_TagString: Box_Trap
@@ -1064,20 +927,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6382180047102962193
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5011279526210125276}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7293461586997374095, guid: 729f156aa043eb9448b386bc0c3b7459, type: 3}
 --- !u!1 &5100367929292703086
 GameObject:
   m_ObjectHideFlags: 0
@@ -1089,7 +938,6 @@ GameObject:
   - component: {fileID: 783564862572702233}
   - component: {fileID: 5475456842094994648}
   - component: {fileID: 3199262996167145545}
-  - component: {fileID: 3683199423665492931}
   m_Layer: 0
   m_Name: gainhon (1)
   m_TagString: Box_Trap
@@ -1160,20 +1008,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3683199423665492931
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5100367929292703086}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7293461586997374095, guid: 729f156aa043eb9448b386bc0c3b7459, type: 3}
 --- !u!1 &5366322604600783902
 GameObject:
   m_ObjectHideFlags: 0
@@ -1185,7 +1019,6 @@ GameObject:
   - component: {fileID: 5939590132478452546}
   - component: {fileID: 1711252205759971389}
   - component: {fileID: 4247407855963748319}
-  - component: {fileID: 2129699891147825632}
   m_Layer: 0
   m_Name: gainhon (4)
   m_TagString: Box_Trap
@@ -1256,20 +1089,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2129699891147825632
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5366322604600783902}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7293461586997374095, guid: 729f156aa043eb9448b386bc0c3b7459, type: 3}
 --- !u!1 &5688889885539749930
 GameObject:
   m_ObjectHideFlags: 0
@@ -1281,7 +1100,6 @@ GameObject:
   - component: {fileID: 6658422945483472926}
   - component: {fileID: 4938231934110072572}
   - component: {fileID: 6691528411498177686}
-  - component: {fileID: 1709739547633369626}
   m_Layer: 0
   m_Name: gainhon (21)
   m_TagString: Box_Trap
@@ -1352,20 +1170,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1709739547633369626
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5688889885539749930}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7293461586997374095, guid: 729f156aa043eb9448b386bc0c3b7459, type: 3}
 --- !u!1 &5877469829645431210
 GameObject:
   m_ObjectHideFlags: 0
@@ -1377,7 +1181,6 @@ GameObject:
   - component: {fileID: 7241676033875415358}
   - component: {fileID: 5719870632749871726}
   - component: {fileID: 1339392822088305313}
-  - component: {fileID: 1760529333555610808}
   m_Layer: 0
   m_Name: gainhon (19)
   m_TagString: Box_Trap
@@ -1448,20 +1251,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1760529333555610808
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5877469829645431210}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7293461586997374095, guid: 729f156aa043eb9448b386bc0c3b7459, type: 3}
 --- !u!1 &6261237282415977448
 GameObject:
   m_ObjectHideFlags: 0
@@ -1473,7 +1262,6 @@ GameObject:
   - component: {fileID: 1450406598321164393}
   - component: {fileID: 3265193445544751874}
   - component: {fileID: 512214648709581712}
-  - component: {fileID: 8505159796924854501}
   m_Layer: 0
   m_Name: gainhon (6)
   m_TagString: Box_Trap
@@ -1544,20 +1332,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8505159796924854501
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6261237282415977448}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7293461586997374095, guid: 729f156aa043eb9448b386bc0c3b7459, type: 3}
 --- !u!1 &6270383841763016751
 GameObject:
   m_ObjectHideFlags: 0
@@ -1569,7 +1343,6 @@ GameObject:
   - component: {fileID: 6114699447359142665}
   - component: {fileID: 7236601270327903513}
   - component: {fileID: 2985387919294843497}
-  - component: {fileID: 5097688476702495914}
   m_Layer: 0
   m_Name: gainhon (13)
   m_TagString: Box_Trap
@@ -1640,20 +1413,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5097688476702495914
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6270383841763016751}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7293461586997374095, guid: 729f156aa043eb9448b386bc0c3b7459, type: 3}
 --- !u!1 &7933568459931628519
 GameObject:
   m_ObjectHideFlags: 0
@@ -1665,7 +1424,6 @@ GameObject:
   - component: {fileID: 2746646409102063527}
   - component: {fileID: 8144924834382670006}
   - component: {fileID: 7280163687376980228}
-  - component: {fileID: 711397402759449342}
   m_Layer: 0
   m_Name: gainhon (3)
   m_TagString: Box_Trap
@@ -1736,20 +1494,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &711397402759449342
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7933568459931628519}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7293461586997374095, guid: 729f156aa043eb9448b386bc0c3b7459, type: 3}
 --- !u!1 &8024205997673775486
 GameObject:
   m_ObjectHideFlags: 0
@@ -1761,7 +1505,6 @@ GameObject:
   - component: {fileID: 8729044538410781166}
   - component: {fileID: 7982124173007369075}
   - component: {fileID: 770969646771173070}
-  - component: {fileID: 5180051570870566097}
   m_Layer: 0
   m_Name: gainhon (22)
   m_TagString: Box_Trap
@@ -1832,20 +1575,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5180051570870566097
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8024205997673775486}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7293461586997374095, guid: 729f156aa043eb9448b386bc0c3b7459, type: 3}
 --- !u!1 &8442300356893902842
 GameObject:
   m_ObjectHideFlags: 0
@@ -1857,7 +1586,6 @@ GameObject:
   - component: {fileID: 2359346646347206402}
   - component: {fileID: 8649152377002082799}
   - component: {fileID: 3434961603946628425}
-  - component: {fileID: 7758034640904865733}
   m_Layer: 0
   m_Name: gainhon (24)
   m_TagString: Box_Trap
@@ -1928,20 +1656,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7758034640904865733
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8442300356893902842}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7293461586997374095, guid: 729f156aa043eb9448b386bc0c3b7459, type: 3}
 --- !u!1 &8471594914725869289
 GameObject:
   m_ObjectHideFlags: 0
@@ -1953,7 +1667,6 @@ GameObject:
   - component: {fileID: 8554021310171919991}
   - component: {fileID: 410737260247474173}
   - component: {fileID: 8364753330000190126}
-  - component: {fileID: 5195168960383922925}
   m_Layer: 0
   m_Name: gainhon (14)
   m_TagString: Box_Trap
@@ -2024,20 +1737,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5195168960383922925
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8471594914725869289}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7293461586997374095, guid: 729f156aa043eb9448b386bc0c3b7459, type: 3}
 --- !u!1 &8473018645132672234
 GameObject:
   m_ObjectHideFlags: 0
@@ -2049,7 +1748,6 @@ GameObject:
   - component: {fileID: 626699392288512309}
   - component: {fileID: 2752203332365054425}
   - component: {fileID: 5527285344122876654}
-  - component: {fileID: 8998712262804120156}
   m_Layer: 0
   m_Name: gainhon (23)
   m_TagString: Box_Trap
@@ -2120,20 +1818,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8998712262804120156
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8473018645132672234}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7293461586997374095, guid: 729f156aa043eb9448b386bc0c3b7459, type: 3}
 --- !u!1001 &3803451526325692512
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -9,24 +9,17 @@ public class Manager_Clother : MonoBehaviour
 
     void Start()
     {
-        list_Item = GetComponentsInChildren<Button>();
-        foreach(Button x in list_Item)
+        Debug.Log(transform.GetComponentsInChildren<Button>().Length);
+        Get_Child_Component.Get_Child(transform, "Item").GetComponent<Button>().onClick.AddListener( () => Load_NV(0)); // Item nv1
+        for (int i = 1; i < transform.GetComponentsInChildren<Button>().Length; i++)
         {
-            //Debug.Log(x.gameObject.name);
+            int temp_i = i;
+            Get_Child_Component.Get_Child(transform, string.Format("Item ({0})", i)).GetComponent<Button>().onClick.AddListener( () => Load_NV(temp_i)); // Item nv2
         }
     }
-
-    public void Get_Clother(GameObject x)
+    void Load_NV(int index)
     {
-        int num_Game_Object_Selected=0;
-        for(int i=0; i<list_Item.Length; i++)
-        {
-            if (list_Item[i].gameObject == x)
-            {
-                // xu ly khi click vao item vua chon
-                num_Game_Object_Selected = i;
-            }
-        }
-        Player.instance.Load_Player_Start(num_Game_Object_Selected);
+        if(Save_Data.Load().index_Curr != index)
+            Player.instance.Load_Player_Start(index);
     }
-}
+} 

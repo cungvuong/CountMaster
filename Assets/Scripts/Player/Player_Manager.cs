@@ -17,10 +17,12 @@ public class Player_Manager : MonoBehaviour
     //[HideInInspector]
     public bool tru_Attack = false;
     public GameObject blood;
-    public bool time_Center = true;
     public bool center_Done;
     public GameObject[] tru;
     GameObject curr_Tru;
+    Coroutine corotinCenter;
+
+    bool Time_Addforce = true;
     private void Awake()
     {
         if (instance == null)
@@ -36,8 +38,7 @@ public class Player_Manager : MonoBehaviour
     private void Start()
     {
         Start_Player_();
-        //if(tru.Length!=0)
-        //    curr_Tru = tru[0];
+        Corrotine_Center_Force(0.3f);
     }
 
     private void Update()
@@ -56,6 +57,7 @@ public class Player_Manager : MonoBehaviour
 
     public void Start_Player_()
     {
+        tru = new GameObject[3];
         tru_Attack = false;
         boss_Attack = false;
         rb = GetComponent<Rigidbody>();
@@ -66,29 +68,14 @@ public class Player_Manager : MonoBehaviour
 
     void Movement()
     {
-        mLookDirection = (center_Point.transform.position - transform.position).normalized;
-        //if (Mathf.Abs((center_Point.transform.position - transform.position).magnitude)<=0.01f)
-        //{
-        //    center_Done = true;
-        //}
-        //if (time_Center)  // time_Center
-        //{
-        //    if(!fall_ && !fly && !center_Done)
-        //    {
-        //        rb.AddForce(mLookDirection * (40f), ForceMode.Force);
-        //        //transform.position = Vector3.MoveTowards(transform.position, center_Point.transform.position, Time.deltaTime);
-        //    }
-        //}
         if (fall_) // nhan vat ha canh'
         {
-            transform.Translate(Vector3.up * -moveSpeed * 1.2f * Time.deltaTime);
+            transform.Translate(Vector3.up * -moveSpeed * 1.5f * Time.deltaTime);
         }
         if (fly) // nv bay len 
         {
-            transform.Translate(Vector3.up * moveSpeed * 1.2f * Time.deltaTime);
-            //Debug.Log("fly");
+            transform.Translate(Vector3.up * moveSpeed * 1.3f * Time.deltaTime);
         }
-        Attack_Tru();
         if (boss.GetComponent<Boss_Manager>().alive) // khi boss con song
         {
             if (Mathf.Abs((boss.transform.position - center_Point.transform.position).magnitude) <= 10f)
@@ -104,6 +91,17 @@ public class Player_Manager : MonoBehaviour
                 transform.gameObject.GetComponentInChildren<Animator>().Play("run");
             }
         }
+        if (Time_Addforce)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, center_Point.transform.position, Time.deltaTime*2.1f);
+        }
+    }
+
+    IEnumerator Center_Player_Addforce(float time)
+    {
+        Time_Addforce = true;
+        yield return new WaitForSeconds(time);
+        Time_Addforce = false;
     }
 
     void Attack_Boss(GameObject enemy)
@@ -152,36 +150,18 @@ public class Player_Manager : MonoBehaviour
                     transform.gameObject.GetComponentInChildren<Animator>().Play("run");
                 }
             }
-
         }
     }
 
-    void Attack_Tru()
+    public void Attack_Tru(GameObject tru)
     {
-        if (tru.Length != 0)
-        {
-            foreach (GameObject x in tru)
-            {
-                if (x.gameObject.GetComponent<Boss_Enemy>().alive)
-                    if (Mathf.Abs((x.transform.position - center_Point.transform.position).magnitude) <= 8f)
-                    {
-                        curr_Tru = x;
-                        tru_Attack = true;
-                        //Player.instance.can_Move = false;
-                    }
-                    else { }
-                else
-                {
-                    tru_Attack = false;
-                    Player.instance.can_Move = true;
-                }
-            }
-        }
+        this.tru_Attack = true;
+        curr_Tru = tru;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Box_Trap")
+        if (collision.gameObject.CompareTag("Box_Trap"))
         {
             Die();
         }
@@ -191,8 +171,7 @@ public class Player_Manager : MonoBehaviour
         }
         if (collision.gameObject.tag == "boss")
         {
-            Player.instance.player_Oj_List.Remove(this.gameObject);
-            Die_When_Attack_Boss();
+            Die();
             if (Player.instance.player_Oj_List.Count == 0) // end game
                 Player.instance.End_Game();
         }
@@ -207,40 +186,6 @@ public class Player_Manager : MonoBehaviour
         {
             this.fall_ = false;
         }
-        //if (collision.collider.tag == "slide")
-        //{
-        //    foreach(GameObject x in Pooling_Player.instance.list_Obj)
-        //    {
-        //        x.GetComponent<Player_Manager>().time_Center = false;
-        //    }
-        //}
-    }
-
-    //private void OnCollisionStay(Collision collision)
-    //{
-    //    if(collision.gameObject.tag == "player")
-    //    {
-    //        if (!collision.gameObject.GetComponent<Player_Manager>().center_Done)
-    //        {
-    //            this.center_Done = false;
-    //            Debug.Log("center_Done");
-    //        }
-    //        else
-    //        {
-    //            this.center_Done = true;
-    //        }
-    //    }
-    //}
-
-
-    IEnumerator Time_Delay()
-    {
-        time_Center = false;
-        yield return new WaitForSeconds(1f);
-        foreach (GameObject x in Pooling_Player.instance.list_Obj)
-        {
-            x.GetComponent<Player_Manager>().time_Center = true;
-        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -251,8 +196,20 @@ public class Player_Manager : MonoBehaviour
         }
     }
 
+    //private void OnCollisionStay(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("slide"))
+    //    {
+    //        this.StopCoroutine(corotinCenter);
+    //    }
+    //}
+
     public void Die()
     {
+        if (Player.instance.time_Center)
+        {
+            Player.instance.Start_AddForce();
+        }
         Player.instance.player_Oj_List.Remove(this.gameObject);
         Player.instance.mount_Player.text = Player.instance.player_Oj_List.Count.ToString();
         //Instantiate(blood, transform.position + new Vector3(0f, 0.1f, 0f), Quaternion.Euler(90f, 0f, 0f));
@@ -266,33 +223,23 @@ public class Player_Manager : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    void Die_When_Attack_Boss()
-    {
-        Player.instance.mount_Player.text = Player.instance.player_Oj_List.Count.ToString();
-
-        StartCoroutine(Start_Die_Ani());
-    }
-
     IEnumerator Time_Exit_Slide()
     {
         this.fly = true;
         if (gameObject.activeSelf)
         {
-            yield return new WaitForSeconds(0.2f);
-            //if (gameObject.activeSelf)
-            //{
-
-            //}
+            yield return new WaitForSeconds(0.3f);
             this.fall_ = true;
             this.fly = false;
         }
     }
 
-    IEnumerator Start_Die_Ani()
+    public void Corrotine_Center_Force(float time)
     {
-        gameObject.SetActive(false);
-        yield return new WaitForSeconds(0.5f);
+        this.StopCoroutine(corotinCenter);
+        this.StartCoroutine(Center_Player_Addforce(time));
     }
+
     private void OnDisable()
     {
         StopAllCoroutines();
@@ -302,5 +249,8 @@ public class Player_Manager : MonoBehaviour
         Start_Player_();
         fly = false;
         fall_ = false;
+        corotinCenter = StartCoroutine(Center_Player_Addforce(0.3f));
+        Corrotine_Center_Force(0.5f);
     }
+
 }

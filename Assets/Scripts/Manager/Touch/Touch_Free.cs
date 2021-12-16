@@ -14,17 +14,19 @@ public class Touch_Free : MonoBehaviour
     public GameObject box_Left_;
     public TextMeshPro text_Mesh_Clone;
     int mount_Clone =0;
+    int mount_Du =0;
     private void Awake()
     {
         if(instance == null)
         {
             instance = this;
         }    
+        player_Spawn_ = GameObject.FindGameObjectWithTag("point_spawn");
     }
 
     private void OnEnable()
     {
-        clone_Free_X = Random.Range(2, 5);
+        clone_Free_X = Random.Range(2, 4);
         if (cal_Free)
         {
             text_Mesh_Clone.text = "x" + clone_Free_X.ToString();
@@ -34,7 +36,6 @@ public class Touch_Free : MonoBehaviour
             clone_Free_X *= 15;
             text_Mesh_Clone.text = "+" + clone_Free_X.ToString();
         }
-        player_Spawn_ = GameObject.FindGameObjectWithTag("point_spawn");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -50,38 +51,45 @@ public class Touch_Free : MonoBehaviour
             {
                 mount_Clone = clone_Free_X;
             }
-            // neu tra loi dung
-            //for (int i = 0; i < Player.instance.player_Oj_List.Count; i++)
-            //{
-            //    Player.instance.player_Oj_List[i].GetComponent<Rigidbody>().drag = 10f;
-            //}
+            if((mount_Clone + Player.instance.player_Oj_List.Count) >= 210)
+            {
+                mount_Du = (mount_Clone + Player.instance.player_Oj_List.Count) - 210;
+                mount_Clone = 210 - Player.instance.player_Oj_List.Count;
+                Pooling_Player.instance.sodu += mount_Du;
+            }
             for (int j = 0; j < mount_Clone; j++) // sinh them so luong player
             {
-                Pooling_Player.instance.UpDate_Spawn_Player(); // moi lan sinh se set active 1 object moi
-
-                float posx = Random.Range(-1.5f, 1.5f);
-                float posz = Random.Range(-1.5f, 1.5f);
                 GameObject x = Pooling_Player.instance.GetPooledObject();
                 if (x != null)
                 {
-                    x.transform.position = player_Spawn_.transform.position + new Vector3(posx, 0f, posz);
-                    x.SetActive(true);
                     Player.instance.player_Oj_List.Add(x);
-                    Player.instance.mount_Player.text = Pooling_Player.instance.Mount_Player_Active().ToString();
-                }
-                else
-                {
-                    Debug.Log("du");
-                    Pooling_Player.instance.Manager_Du();
+                    x.transform.localPosition = Pooling_Player.instance.Get_Pos(Player.instance.player_Oj_List.Count);
+                    x.transform.rotation = Quaternion.identity;
+                    x.SetActive(true);
                 }
             }
-            box_Left_.GetComponent<BoxCollider>().enabled = false;
-            for (int i = 0; i < Player.instance.player_Oj_List.Count; i++)
+            if (Pooling_Player.instance.sodu > 210)
             {
-                Player.instance.player_Oj_List[i].GetComponent<Rigidbody>().drag = 10f;
+                Player.instance.mount_Player.text = Pooling_Player.instance.sodu.ToString();
             }
+            if(Player.instance.player_Oj_List.Count <210)
+            {
+                Pooling_Player.instance.UpDate_Spawn_Player(); // tinh lai so du
+                mount_Du = 0;
+                Player.instance.mount_Player.text = Player.instance.player_Oj_List.Count.ToString();
+            }
+            AddForce_All_Player();
+            box_Left_.GetComponent<BoxCollider>().enabled = false;
         }
         gameObject.GetComponent<BoxCollider>().enabled = false;
         gameObject.SetActive(false);
+    }
+
+    void AddForce_All_Player()
+    {
+        foreach(GameObject x in Player.instance.player_Oj_List)
+        {
+            x.GetComponent<Player_Manager>().Corrotine_Center_Force(0.3f);
+        }
     }
 }

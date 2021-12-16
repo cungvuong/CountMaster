@@ -11,6 +11,8 @@ public class Touch_Player : MonoBehaviour
     //public GameObject cam;
     public GameObject player_Spawn;
     public GameObject box_Left;
+    int mount_Du = 0;
+
     // Start is called before the first frame update
 
     private void Awake()
@@ -25,33 +27,40 @@ public class Touch_Player : MonoBehaviour
     {
         player_Spawn = GameObject.FindGameObjectWithTag("point_spawn");
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("player"))
         {
             if (GetComponentInChildren<TextMeshPro>().text == transform.parent.GetComponent<Range_Ques>().kq.ToString()) // neu tra loi dung
             {
+                if ((clone_X + Player.instance.player_Oj_List.Count) >= 210)
+                {
+                    mount_Du = (clone_X + Player.instance.player_Oj_List.Count) - 210;
+                    clone_X = 210 - Player.instance.player_Oj_List.Count;
+                    Pooling_Player.instance.sodu += mount_Du;
+                }
                 for (int i = 0; i < clone_X; i++)
                 {
-                    Pooling_Player.instance.UpDate_Spawn_Player(); // moi lan sinh se set active 1 object moi
 
-                    float posx = Random.Range(-1.5f, 1.5f);
-                    float posz = Random.Range(-1.5f, 1.5f);
                     GameObject x = Pooling_Player.instance.GetPooledObject();
                     if (x != null)
                     {
-                        x.transform.position = player_Spawn.transform.position + new Vector3(posx, 0f, posz);
-                        x.SetActive(true);
                         Player.instance.player_Oj_List.Add(x);
-                        Player.instance.mount_Player.text = Pooling_Player.instance.Mount_Player_Active().ToString();
-                    }
-                    else
-                    {
-                        Debug.Log("du");
-                        Pooling_Player.instance.Manager_Du();
+                        //x.transform.position = player_Spawn.transform.position + new Vector3(posx, 0f, posz);
+                        x.transform.localPosition = Pooling_Player.instance.Get_Pos(Player.instance.player_Oj_List.Count);
+                        x.transform.rotation = Quaternion.identity;
+                        x.SetActive(true);
                     }
                 }
+                if (Pooling_Player.instance.sodu > 210)
+                    Player.instance.mount_Player.text = Pooling_Player.instance.sodu.ToString();
+                if (Player.instance.player_Oj_List.Count < 210)
+                {
+                    Pooling_Player.instance.UpDate_Spawn_Player(); // tinh lai so du
+                    mount_Du = 0;
+                    Player.instance.mount_Player.text = Player.instance.player_Oj_List.Count.ToString();
+                }
+                AddForce_All_Player();
                 box_Left.GetComponent<BoxCollider>().enabled = false;
             }
             else
@@ -68,9 +77,17 @@ public class Touch_Player : MonoBehaviour
                         break;
                     }
                 }
+                AddForce_All_Player();
             }
         }
         gameObject.GetComponent<BoxCollider>().enabled = false;
         gameObject.SetActive(false);
+    }
+    void AddForce_All_Player()
+    {
+        foreach (GameObject x in Player.instance.player_Oj_List)
+        {
+            x.GetComponent<Player_Manager>().Corrotine_Center_Force(0.3f);
+        }
     }
 }

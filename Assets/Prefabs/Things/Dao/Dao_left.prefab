@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 475908262004267092}
   - component: {fileID: 3432181166465491254}
   - component: {fileID: 397693655758986014}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: polySurface2
   m_TagString: Box_Trap
   m_Icon: {fileID: 0}

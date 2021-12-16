@@ -38,11 +38,7 @@ public class Follow : MonoBehaviour
                         if(Player.instance.player_Oj_List[0].gameObject != null)
                         if (!Player.instance.player_Oj_List[0].GetComponent<Player_Manager>().boss_Attack)
                         {
-                            transform.position = Vector3.Lerp(transform.position, new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z - z_Cam), Time.deltaTime + 0.08f);
-                        }
-                        else
-                        {
-
+                            transform.position = Vector3.Lerp(transform.position, new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z - z_Cam), Time.deltaTime + 0.1f);
                         }
                     }
                     if (transform.position.x > 0.7f)

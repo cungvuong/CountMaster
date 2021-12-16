@@ -499,7 +499,7 @@ GameObject:
   - component: {fileID: 4359963408828586147}
   - component: {fileID: 7372138792355922049}
   - component: {fileID: 3702190878241488048}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCylinder4
   m_TagString: Box_Trap
   m_Icon: {fileID: 0}
@@ -594,7 +594,7 @@ GameObject:
   - component: {fileID: 2933400834563313128}
   - component: {fileID: 3968471071996304146}
   - component: {fileID: 6926890828769698864}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCylinder4
   m_TagString: Box_Trap
   m_Icon: {fileID: 0}
@@ -851,7 +851,7 @@ GameObject:
   - component: {fileID: 5692506346089248694}
   - component: {fileID: 2932075369999155878}
   - component: {fileID: 4841831275720024715}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCylinder4
   m_TagString: Box_Trap
   m_Icon: {fileID: 0}
@@ -1131,7 +1131,7 @@ GameObject:
   - component: {fileID: 2442680091078033289}
   - component: {fileID: 2649824498084164056}
   - component: {fileID: 6978904317975577962}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCylinder4
   m_TagString: Box_Trap
   m_Icon: {fileID: 0}
@@ -1226,7 +1226,7 @@ GameObject:
   - component: {fileID: 6323319570904826821}
   - component: {fileID: 8975552296897832953}
   - component: {fileID: 1606125399797396394}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCylinder4
   m_TagString: Box_Trap
   m_Icon: {fileID: 0}
@@ -1321,7 +1321,7 @@ GameObject:
   - component: {fileID: 1263589248998657545}
   - component: {fileID: 691136294988419193}
   - component: {fileID: 3090926854503757705}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCylinder4
   m_TagString: Box_Trap
   m_Icon: {fileID: 0}

@@ -8,6 +8,7 @@ public class Enemy_Shoot : MonoBehaviour
     public GameObject bullet;
     public GameObject point_Shot;
     bool shot = true;
+    Vector3 targetPos;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,25 +18,22 @@ public class Enemy_Shoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 targetPos = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
+        targetPos = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
         transform.LookAt(targetPos);
         Check_Bullet();
     }
 
     void Check_Bullet()
     {
-        if(Player.instance.player_Oj_List.Count != 0)
+        if(Player.instance.player_Oj_List.Count != 0 && (Mathf.Abs((Player.instance.player_Oj_List[0].transform.position - transform.position).magnitude) < 15f))
             for (int i = 0; i < Player.instance.player_Oj_List.Count; i++)
             {
-                if(Mathf.Abs((Player.instance.player_Oj_List[i].transform.position - transform.position).magnitude) < 15f)
+                if (shot)
                 {
-                    if (shot)
-                    {
-                        Instantiate(bullet, point_Shot.transform.position, Quaternion.identity);
-                        StartCoroutine(Time_Delay_Shot());
-                    }
-                    shot = false;
+                    Instantiate(bullet, point_Shot.transform.position, Quaternion.identity);
+                    StartCoroutine(Time_Delay_Shot());
                 }
+                shot = false;
             }
     }
 

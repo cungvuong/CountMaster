@@ -11,6 +11,7 @@ public class Boss_Manager : Boss
     public Text earn_Gold;
     private GameObject cam;
     Transform pos_Cam_Start;
+    GameObject center_Point;
     public int Health;
 
     private void Start()
@@ -25,6 +26,7 @@ public class Boss_Manager : Boss
         this.health = Health;
         health_Text.text = this.health.ToString();
         pos_Cam_Start = cam.transform;
+        transform.rotation = Quaternion.Euler(0f, 180f, 0f);
     }
 
     private void OnCollisionEnter(Collision collision)

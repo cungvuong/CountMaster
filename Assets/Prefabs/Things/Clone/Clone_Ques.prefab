@@ -5448,7 +5448,7 @@ GameObject:
   - component: {fileID: 2616936075264109534}
   - component: {fileID: 2018683346741264270}
   - component: {fileID: 6428099745554442506}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Op1
   m_TagString: free
   m_Icon: {fileID: 0}
@@ -5643,7 +5643,7 @@ GameObject:
   - component: {fileID: 214128942804885481}
   - component: {fileID: 4443099352222057389}
   - component: {fileID: 4116405463901668527}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Op2
   m_TagString: free
   m_Icon: {fileID: 0}

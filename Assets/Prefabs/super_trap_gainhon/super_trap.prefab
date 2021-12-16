@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9075270454678293809}
   - component: {fileID: 3099579191464278974}
   - component: {fileID: 8784313532285931528}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCylinder11
   m_TagString: Box_Trap
   m_Icon: {fileID: 0}
@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 6753045480636645901}
   - component: {fileID: 4932434676137214423}
   - component: {fileID: 6617157791799738075}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCube1
   m_TagString: Box_Trap
   m_Icon: {fileID: 0}
@@ -350,7 +350,7 @@ GameObject:
   - component: {fileID: 2705151280346793436}
   - component: {fileID: 722611368309988625}
   - component: {fileID: 4514523820857613942}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCylinder10
   m_TagString: Box_Trap
   m_Icon: {fileID: 0}

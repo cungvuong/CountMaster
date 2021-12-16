@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6528833889549556956}
   m_Layer: 0
-  m_Name: CumXuongRong
+  m_Name: BuiXRphai
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,6 +46,10 @@ PrefabInstance:
     - target: {fileID: 7390713736880006935, guid: cedbc59f5df00e64687f12bf87b7983a, type: 3}
       propertyPath: m_Name
       value: Xuong_Rong (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7390713736880006935, guid: cedbc59f5df00e64687f12bf87b7983a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7915857346015100333, guid: cedbc59f5df00e64687f12bf87b7983a, type: 3}
       propertyPath: m_RootOrder
@@ -109,6 +113,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Xuong_Rong (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7390713736880006935, guid: cedbc59f5df00e64687f12bf87b7983a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7915857346015100333, guid: cedbc59f5df00e64687f12bf87b7983a, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -170,6 +178,10 @@ PrefabInstance:
     - target: {fileID: 7390713736880006935, guid: cedbc59f5df00e64687f12bf87b7983a, type: 3}
       propertyPath: m_Name
       value: Xuong_Rong (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7390713736880006935, guid: cedbc59f5df00e64687f12bf87b7983a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7915857346015100333, guid: cedbc59f5df00e64687f12bf87b7983a, type: 3}
       propertyPath: m_RootOrder
@@ -233,6 +245,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Xuong_Rong
       objectReference: {fileID: 0}
+    - target: {fileID: 7390713736880006935, guid: cedbc59f5df00e64687f12bf87b7983a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7915857346015100333, guid: cedbc59f5df00e64687f12bf87b7983a, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -295,6 +311,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Xuong_Rong (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7390713736880006935, guid: cedbc59f5df00e64687f12bf87b7983a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7915857346015100333, guid: cedbc59f5df00e64687f12bf87b7983a, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -356,6 +376,10 @@ PrefabInstance:
     - target: {fileID: 7390713736880006935, guid: cedbc59f5df00e64687f12bf87b7983a, type: 3}
       propertyPath: m_Name
       value: Xuong_Rong (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7390713736880006935, guid: cedbc59f5df00e64687f12bf87b7983a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7915857346015100333, guid: cedbc59f5df00e64687f12bf87b7983a, type: 3}
       propertyPath: m_RootOrder

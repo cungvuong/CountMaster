@@ -13,6 +13,6 @@ public class Test_Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(0f, 0f, 3f*Time.deltaTime);
+        //transform.Translate(0f, 0f, 3f*Time.deltaTime);
     }
 }

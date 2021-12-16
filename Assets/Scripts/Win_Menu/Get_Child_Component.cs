@@ -10,7 +10,7 @@ public class Get_Child_Component
 
         foreach(RectTransform x in list_Child)
         {
-            if (x.name == child_Name)
+            if (x.name.Equals(child_Name))
             {
                 return x.gameObject;
             }

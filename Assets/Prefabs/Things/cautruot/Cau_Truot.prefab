@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6248722397519145646}
   - component: {fileID: 3797039628202925421}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Box_Check
   m_TagString: exit_slide
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 833613998587745010}
   - component: {fileID: 3203573131508540984}
   - component: {fileID: 7921716575225627205}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cau_Truot
   m_TagString: slide
   m_Icon: {fileID: 0}

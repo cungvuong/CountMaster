@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 6286978337335032181}
   - component: {fileID: 718371522713161871}
   - component: {fileID: 7074902843538945423}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: cucgai_lan
   m_TagString: Box_Trap
   m_Icon: {fileID: 0}

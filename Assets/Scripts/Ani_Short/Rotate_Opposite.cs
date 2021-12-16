@@ -5,21 +5,34 @@ using UnityEngine;
 public class Rotate_Opposite : MonoBehaviour
 {
     int ran;
+    bool check_Rotate;
     // Start is called before the first frame update
     void Start()
     {
         ran = Random.Range(0, 2);
+        check_Rotate = true;
     }
 
     private void Update()
     {
-        if (ran == 1)
+        if (check_Rotate)
         {
-            Rotate_1();
+            if (ran == 1)
+            {
+                Rotate_1();
+            }
+            else
+            {
+                Rotate_2();
+            }
+        }
+        if(transform.position.z < Player.instance.gameObject.transform.position.z - 10f)
+        {
+            check_Rotate = false;
         }
         else
         {
-            Rotate_2();
+            check_Rotate = true;
         }
     }
 

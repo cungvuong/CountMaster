@@ -5,12 +5,29 @@ using TMPro;
 public class Boss_Enemy : Boss
 {
     public TextMeshPro health_Text;
-    
+    GameObject center_Point;
     private void Start()
     {
         this.alive = true;
         this.health = 20;
         health_Text.text = health.ToString();
+        center_Point = GameObject.FindGameObjectWithTag("center");
+    }
+
+    private void Update()
+    {
+        Check_Player_Attack();
+    }
+
+    void Check_Player_Attack()
+    {
+        if (Mathf.Abs((center_Point.transform.position - transform.position).magnitude) <= 8f)
+        {
+            Player.instance.player_Oj_List.ForEach(x =>
+            {
+                x.GetComponent<Player_Manager>().Attack_Tru(this.gameObject);
+            });
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

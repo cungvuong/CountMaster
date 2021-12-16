@@ -21,9 +21,9 @@ public class Enemy_Bullet : MonoBehaviour
 
     void Movement()
     {
-        //if(target != null)
         if (!target.activeSelf)
         {
+            if (Player.instance.player_Oj_List.Count <= 0) return;
             target = Player.instance.player_Oj_List[Random.Range(0, Player.instance.player_Oj_List.Count)];
         }
         else
