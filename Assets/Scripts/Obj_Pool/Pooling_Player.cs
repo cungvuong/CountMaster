@@ -42,15 +42,15 @@ public class Pooling_Player : MonoBehaviour
 
         for(int i=0; i<210; i++) // sinh truoc 300 object
         {
-            GameObject x = Instantiate(curr_Player_Pool, player_Spawn_.transform.position, player_Spawn_.transform.rotation, player_Spawn_.transform.parent);
+            GameObject x = Instantiate(curr_Player_Pool, playerAll.transform.position, player_Spawn_.transform.rotation, player_Spawn_.transform.parent);
             x.SetActive(false);
             list_Obj.Add(x);
         }
+        Set_Pos();
     }
 
     private void Start()
     {
-        Set_Pos();
         Player.instance.curr_Player = curr_Player_Pool; // set nhan vat ban dau chon
         for (int i = 0; i < Save_Data.Load().mount_Player; i++)
         {
@@ -80,7 +80,7 @@ public class Pooling_Player : MonoBehaviour
 
     public Vector3 Get_Player_Pos(int index)
     {
-        Vector3 pos = Vector3.zero;
+        Vector3 pos = new Vector3(0f, 0.2f, 0f);
         float khoangcachx = -0.3f;
         float khoangcachy = -0.3f;
         int dotang = 10;
@@ -132,13 +132,14 @@ public class Pooling_Player : MonoBehaviour
     public void Set_NV_After_Back()
     {
         // set lai index
-        //
-        var list_Inactive = this.list_Obj.FindAll(go => !go.activeInHierarchy);
-        list_Inactive.ForEach(x =>
+        var list_Active = list_Obj;
+        list_Active.ForEach(x =>
         {
-            Debug.Log("curr");
-            x.gameObject.GetComponentsInChildren<Check_Player>(true)[new_Index].gameObject.SetActive(true);
-            x.gameObject.GetComponentsInChildren<Check_Player>(true)[this.curr_Index].gameObject.SetActive(false);
+            if(!x.gameObject.GetComponentsInChildren<Check_Player>(true)[new_Index].gameObject.activeSelf)
+            {
+                x.gameObject.GetComponentsInChildren<Check_Player>(true)[new_Index].gameObject.SetActive(true);
+                x.gameObject.GetComponentsInChildren<Check_Player>(true)[this.curr_Index].gameObject.SetActive(false);
+            }
         });
     }
 
@@ -150,12 +151,7 @@ public class Pooling_Player : MonoBehaviour
         {
             if(list_Obj[i].activeSelf)
                 list_Obj[i].SetActive(false);
-            else
-            {
-                continue;
-            }
         }
-
         for (int i = 0; i < Save_Data.Load().mount_Player; i++) // khoi tao cac object ban dau
         {
             GameObject x = GetPooledObject();

@@ -21,7 +21,6 @@ public class Lose_Game : MonoBehaviour
     void Player_Again()
     {
         Manager_Grounds.instance.ResetMap();
-        Manager_Grounds.instance.CreateNewMap();
         Pooling_Player.instance.Start_Game_Ran();
         Follow.instance.Reset_Cam();
         Player.instance.can_Move = true;

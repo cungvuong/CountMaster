@@ -6,14 +6,20 @@ public class Boss_Enemy : Boss
 {
     public TextMeshPro health_Text;
     GameObject center_Point;
-    private void Start()
+    Vector3 pos_Default = new Vector3();
+    private void Awake()
+    {
+        pos_Default = transform.position;
+    }
+
+    private void OnEnable()
     {
         this.alive = true;
         this.health = 20;
         health_Text.text = health.ToString();
         center_Point = GameObject.FindGameObjectWithTag("center");
+        transform.position = new Vector3(transform.position.x, pos_Default.y, transform.position.z);
     }
-
     private void Update()
     {
         Check_Player_Attack();
@@ -23,6 +29,8 @@ public class Boss_Enemy : Boss
     {
         if (Mathf.Abs((center_Point.transform.position - transform.position).magnitude) <= 8f)
         {
+            Player.instance.tru = this.gameObject;
+            Player.instance.TimeMoveToTru = true;
             Player.instance.player_Oj_List.ForEach(x =>
             {
                 x.GetComponent<Player_Manager>().Attack_Tru(this.gameObject);

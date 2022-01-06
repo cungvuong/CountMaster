@@ -85,9 +85,9 @@ public class Touch_Player : MonoBehaviour
     }
     void AddForce_All_Player()
     {
-        foreach (GameObject x in Player.instance.player_Oj_List)
+        for(int i = 0; i < Player.instance.player_Oj_List.Count; i++)
         {
-            x.GetComponent<Player_Manager>().Corrotine_Center_Force(0.3f);
+            Player.instance.player_Oj_List[i].GetComponent<Player_Manager>().Corrotine_Center_Force(0.25f);
         }
     }
 }

@@ -30,7 +30,11 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public GameObject curr_Player;
     public GameObject start_UI;
+    public bool TimeMoveToTru;
+    //public Camera cam;
     GameObject boss;
+    public GameObject tru;
+    GameObject boss_house;
     private void Awake()
     {
         if(instance == null)
@@ -41,10 +45,14 @@ public class Player : MonoBehaviour
         {
             return;
         }
-        
         point_Spawn = GameObject.FindGameObjectWithTag("point_spawn"); // diem sinh nhan vat
         boss = GameObject.FindGameObjectWithTag("boss");
         time_Center = true;
+    }
+
+    private void Start()
+    {
+        boss_house = GameObject.FindGameObjectWithTag("bosshouse");
     }
 
     void Update()
@@ -77,14 +85,19 @@ public class Player : MonoBehaviour
             if (player_Oj_List[0].GetComponent<Player_Manager>().boss_Attack)
             {
                 can_Move = false;
+                Follow.instance.transform.position = new Vector3(0f, boss_house.transform.position.y + 20f, boss_house.transform.position.z -30f);
+                Follow.instance.transform.rotation = Quaternion.AngleAxis(40f, Vector3.right);
+                //
             }
-            if (player_Oj_List[0].GetComponent<Player_Manager>().tru_Attack)
+            else { Follow.instance.Reset_Cam(); }
+            if (TimeMoveToTru && tru != null)
             {
-                speedZ = 3f;
-                can_Move = false;
+                speedZ = 2f;
+                MoveToTru(tru);
             }
             else
             {
+                can_Move = true;
                 speedZ = 7f;
             }
         }
@@ -97,7 +110,12 @@ public class Player : MonoBehaviour
             StartCoroutine(Time_Win_Game());
         }
     } // di chuyen
-    
+   
+
+    void MoveToTru(GameObject enemy)
+    {
+        transform.position = Vector3.MoveTowards(new Vector3(transform.position.x, 0.25f, transform.position.z), new Vector3(enemy.transform.position.x, 1f, enemy.transform.position.z), Time.deltaTime * 10f);
+    }
     public void Start_AddForce()
     {
         StartCoroutine(AddForce_All_Player());
@@ -105,7 +123,7 @@ public class Player : MonoBehaviour
     public IEnumerator AddForce_All_Player()
     {
         time_Center = false;
-        yield return new WaitForSeconds(1.8f);
+        yield return new WaitForSeconds(1.5f);
         foreach (GameObject x in player_Oj_List)
         {
             x.GetComponent<Player_Manager>().Corrotine_Center_Force(0.8f);
@@ -172,5 +190,10 @@ public class Player : MonoBehaviour
             x.SetActive(true);
         }
         Set_Mount_Text();
+    }
+
+    public void ReSetScene()
+    {
+        SceneManager.LoadScene(0);
     }
 }

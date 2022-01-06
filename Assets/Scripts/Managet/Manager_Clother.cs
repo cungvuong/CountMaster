@@ -9,7 +9,6 @@ public class Manager_Clother : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(transform.GetComponentsInChildren<Button>().Length);
         Get_Child_Component.Get_Child(transform, "Item").GetComponent<Button>().onClick.AddListener( () => Load_NV(0)); // Item nv1
         for (int i = 1; i < transform.GetComponentsInChildren<Button>().Length; i++)
         {

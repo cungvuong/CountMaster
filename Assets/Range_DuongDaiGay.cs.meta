@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 2e1084f7c6aed1042965918d60ff1a22
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Water: {fileID: 1949427855673730737, guid: ccc6614d848a1c54a90c0c06a63c716e, type: 3}
+  - Lava: {fileID: 5891329117328012701, guid: 7cb5502a2fd62b94c8eaff74f34c0a49, type: 3}
+  - Ho_Sau: {fileID: 8742132404032950360, guid: a76f946a55ba4a34eab05e58d72666dc, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

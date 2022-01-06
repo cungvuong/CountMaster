@@ -21,8 +21,8 @@ public class Next_Level : MonoBehaviour
     void Next_Level_()
     {
         Manager_Grounds.instance.ResetMap();
-        Manager_Grounds.instance.CreateNewMap();
         Pooling_Player.instance.Start_Game_Ran();
+        Player_Manager.instance.Start_Player_();
         gameObject.SetActive(false);
     }
 

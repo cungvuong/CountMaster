@@ -27,13 +27,19 @@ public class Range_Ques : MonoBehaviour
 
     int kqs = 0;
 
-    private void Start()
+    private void OnEnable()
     {
         Range_Cal();
     }
 
     void Range_Cal()
     {
+        Touch_Player[] list_Clone = GetComponentsInChildren<Touch_Player>(true);
+        for(int i=0; i<list_Clone.Length; i++)
+        {
+            list_Clone[i].gameObject.GetComponent<BoxCollider>().enabled = true;
+            list_Clone[i].gameObject.SetActive(true);
+        }
         int dau1 = Random.Range(1, 5); // phep tinh 1
         int dau2 = Random.Range(1, 5); // phep tinh 2
         int so1 = Random.Range(1, 7);

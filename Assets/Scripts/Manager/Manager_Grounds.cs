@@ -12,6 +12,7 @@ public class Manager_Grounds : MonoBehaviour
         {
             instance = this;
         }
+        CreateNewMap();
     }
 
     public GameObject ground1; 
@@ -20,7 +21,6 @@ public class Manager_Grounds : MonoBehaviour
     public GameObject gr_ko_cau; 
     
     public GameObject things_Parent;
-    int range;
     public GameObject[] things_Clone_Free;
     public GameObject[] things_Clone_All;
     public GameObject[] things_Map1_1;
@@ -30,91 +30,97 @@ public class Manager_Grounds : MonoBehaviour
     public GameObject mountain; // nui'
     public GameObject mountain_Parent;
     public GameObject trans_Player;
-    public GameObject Boss; // ran boss
+    GameObject Boss; // ran boss
     GameObject[] clone_ques;
     GameObject[] clone_free;
+    [HideInInspector]
+    public List<GameObject> manager_Map = new List<GameObject>();
+    public List<GameObject> manager_Map_Clone_Free = new List<GameObject>();
     float[] range_Trap_Dis = {15f, 40f, 50f, 60f, 70f, 95f, 105f, 115f, 125f, 135f};
-    int trap_Dis;
     //
-    private void Start()
+    private void OnEnable()
     {
-        CreateNewMap();
-        Range_Grounds();
+        Boss = GameObject.FindGameObjectWithTag("boss");
     }
 
     public void CreateNewMap()
     {
         // ran map 1.1 
-        Instantiate(things_Clone_All[Random.Range(0, things_Clone_All.Length)], things_Clone_All[Random.Range(0, things_Clone_All.Length)].transform.position, things_Clone_All[Random.Range(0, things_Clone_All.Length)].transform.rotation, things_Parent.transform);
-        Instantiate(things_Clone_All[Random.Range(0, things_Clone_All.Length)], things_Clone_All[Random.Range(0, things_Clone_All.Length)].transform.position + new Vector3(0f, 0f, 8f), things_Clone_All[Random.Range(0, things_Clone_All.Length)].transform.rotation, things_Parent.transform);
-        //range = Random.Range(0,2);   // range map 1 or 2
-        // clone Trap map 1.1
-        trap_Dis = 0;
-        range = Random.Range(0, things_Map1_1.Length);
-        for(int i=0; i< 1; i++)// range_Trap_Dis.Length; i++)
+        GameObject free1 = Instantiate(things_Clone_All[Random.Range(0, things_Clone_All.Length)], things_Clone_All[Random.Range(0, things_Clone_All.Length)].transform.position, things_Clone_All[Random.Range(0, things_Clone_All.Length)].transform.rotation, things_Parent.transform);
+        manager_Map_Clone_Free.Add(free1);
+        GameObject free2 = Instantiate(things_Clone_All[Random.Range(0, things_Clone_All.Length)], things_Clone_All[Random.Range(0, things_Clone_All.Length)].transform.position + new Vector3(0f, 0f, 8f), things_Clone_All[Random.Range(0, things_Clone_All.Length)].transform.rotation, things_Parent.transform);
+        manager_Map_Clone_Free.Add(free2);
+        // pooling all trap ground
+        Debug.Log(things_Map1_2.Length);
+        for (int i = 0; i < 2; i++)
         {
-            Instantiate(things_Map1_1[range], things_Map1_1[range].transform.position + new Vector3(0f, 0f, range_Trap_Dis[trap_Dis]), Quaternion.identity, things_Parent.transform);
-            trap_Dis++;
+            for(int j=0; j<things_Map1_2.Length; j++)
+            {
+                GameObject x = Instantiate(things_Map1_2[j], things_Map1_2[j].transform.position, things_Map1_2[j].transform.rotation,things_Parent.transform);
+                manager_Map.Add(x);
+                x.SetActive(false);
+            }
         }
-        // clone Trap map 1.2
-        for (int i = 0; i < range_Trap_Dis.Length - 4; i++)// range_Trap_Dis.Length; i++)
-        {
-            range = Random.Range(0, things_Map1_2.Length);
-            Instantiate(things_Map1_2[range], things_Map1_2[range].transform.position + new Vector3(0f, 0f, range_Trap_Dis[trap_Dis]), things_Map1_2[range].transform.rotation, things_Parent.transform);
-            trap_Dis++;
-        }
-        // clone Trap map 1.3
-        for (int i = 0; i < range_Trap_Dis.Length-7; i++)// range_Trap_Dis.Length; i++)
-        {
-            range = Random.Range(0, things_Map1_2.Length);
-            Instantiate(things_Map1_2[range], things_Map1_2[range].transform.position + new Vector3(0f, 0f, range_Trap_Dis[trap_Dis]), things_Map1_2[range].transform.rotation, things_Parent.transform);
-            trap_Dis++;
-        }
-        Range_Mountain();
-        Manager_Clone_Range();
-        Manager_Tru();
-        Manager_Bua_Dao();
     }
 
-    void Range_Grounds()
+    public static List<E> ShuffleList<E>(List<E> inputList)
     {
-        range = Random.Range(0, 1);
-        if (range == 1)
+        List<E> randomList = new List<E>();
+
+        int randomIndex = 0;
+        while (inputList.Count > 0)
         {
-            range = Random.Range(0, 3);
-            if (range == 0)
-            {
-                Instantiate(ground1, transform.position, Quaternion.identity, transform);
-                Instantiate(ground2, transform.position + new Vector3(0f, 0f, 100f), Quaternion.identity, transform);
-            }
-            if (range == 1)
-            {
-                Instantiate(ground2, transform.position, Quaternion.identity, transform);
-                Instantiate(ground1, transform.position + new Vector3(0f, 0f, 100f), Quaternion.identity, transform);
-            }
-            if (range == 2)
-            {
-                Instantiate(ground2, transform.position, Quaternion.identity, transform);
-                Instantiate(ground2, transform.position + new Vector3(0f, 0f, 100f), Quaternion.identity, transform);
-            }
-        } // range ground
-        else
+            randomIndex = Random.Range(0, inputList.Count);
+            randomList.Add(inputList[randomIndex]);
+            inputList.RemoveAt(randomIndex);
+        }
+        return randomList;
+    }
+
+    public void Set_New_Map()
+    {
+        manager_Map = ShuffleList(manager_Map); // random lai map
+        manager_Map_Clone_Free = ShuffleList(manager_Map_Clone_Free);
+        for (int i=0; i < manager_Map_Clone_Free.Count; i++)
         {
-            int k = 1;
-            Instantiate(gr_co_cau, transform.position, gr_co_cau.transform.rotation, transform);
-            Instantiate(gr_co_cau, transform.position + new Vector3(0f, 0f, 53f * k), gr_co_cau.transform.rotation, transform); k++;
-            GameObject late = Instantiate(gr_ko_cau, transform.position + new Vector3(0f, 0f, 53f * k), gr_ko_cau.transform.rotation, transform); k++;
-            Instantiate(gr_ko_cau, late.transform.position + new Vector3(0f, 0f, 50f), gr_ko_cau.transform.rotation, transform); k++;
+            manager_Map_Clone_Free[i].SetActive(false); // disable de reset object
+            manager_Map_Clone_Free[i].SetActive(true);
+        }
+        for (int i = 0; i < manager_Map.Count; i++)
+        {
+            GameObject x = manager_Map[i];
+            if(x.activeSelf)
+                x.SetActive(false); // disable de reset object
+        }
+        Check_TruvsClone();
+    }
+
+    void Check_TruvsClone()
+    {
+        GameObject[] list_Tru = GameObject.FindGameObjectsWithTag("tru");
+        clone_free = GameObject.FindGameObjectsWithTag("free_clone");
+
+        for (int i = 0; i < clone_free.Length; i++)
+        {
+            for (int j = 0; j < list_Tru.Length; j++)
+            {
+                if (clone_free[i].transform.position.z > list_Tru[j].transform.position.z)
+                {
+                    Vector3 x = clone_free[i].transform.position;
+                    clone_free[i].transform.position = new Vector3(clone_free[i].transform.position.x,clone_free[i].transform.position.y,list_Tru[j].transform.position.z);
+                    list_Tru[j].transform.position = new Vector3(list_Tru[j].transform.position.x, list_Tru[j].transform.position.y, x.z);
+                }
+            }
         }
     }
 
     void Range_Mountain()
     {
-        for(int i=0; i<200; i++)
+        for (int i = 0; i < 200; i++)
         {
             float x = Random.Range(-40f, 40f);
             float z = Random.Range(0f, 200f);
-            float y = Random.Range(-7.5f, -5f);
+            //float y = Random.Range(-7.5f, -5f);
             Instantiate(mountain, transform.position + new Vector3(x, -7.5f, z), Quaternion.identity, mountain_Parent.transform);
         }
     }
@@ -148,7 +154,6 @@ public class Manager_Grounds : MonoBehaviour
                 // sinh ra free clone thay the
                 list_Tru[i].SetActive(false);
             }
-            Debug.Log("destroy 1 tru");
         }
     }
 
@@ -201,51 +206,24 @@ public class Manager_Grounds : MonoBehaviour
 
     public void ResetMap()  // set lai map moi
     {
-        Transform[] list_Child_Map = things_Parent.GetComponentsInChildren<Transform>();
-        Transform[] list_Child_Nui = mountain_Parent.GetComponentsInChildren<Transform>();
-
-        for(int i=1; i<list_Child_Map.Length;i++)
-        {
-            list_Child_Map[i].gameObject.SetActive(false);
-        }
-        
-        for(int i=1; i< list_Child_Nui.Length;i++)
-        {
-            list_Child_Nui[i].gameObject.SetActive(false);
-        }
-
-        if(list_Child_Map.Length > 100)
-        {
-            for (int i = 1; i < list_Child_Map.Length; i++)
-            {
-                if(!list_Child_Map[i].gameObject.activeSelf)
-                    Destroy(list_Child_Map[i].gameObject);
-            }
-        }
-        if(list_Child_Nui.Length > 1000)
-        {
-            for (int i = 1; i < list_Child_Nui.Length; i++)
-            {
-                if(!list_Child_Nui[i].gameObject.activeSelf)
-                    Destroy(list_Child_Nui[i].gameObject);
-            }
-        }
+        Set_New_Map();
         Reset_Pos_Player();
         Reset_Boss();
+        Follow.instance.Reset_Cam();
     }
 
     void Reset_Pos_Player()
     {
-        
-        trans_Player.transform.position = new Vector3(0f, 0f, -15f);
+        Test_Player.instance.RangeMap_Start();
+        Player.instance.gameObject.transform.position = GameObject.FindGameObjectWithTag("groundplayer").transform.position + new Vector3(0f, 0f, -3f);
+        Player.instance.tru = null;
         Camera.main.transform.position = new Vector3(0f, 8.5f, -29);
     }
-
+     
     void Reset_Boss()
     {
-        Boss.SetActive(true); // hien lai boss
+        //Boss.SetActive(true); // hien lai boss
         Boss.GetComponentInChildren<Boss_Manager>().Set_Data_Boss(); // se lai data cho boss
-        Boss.GetComponentInChildren<Boss_Manager>().gameObject.transform.rotation = Quaternion.Euler(0f, 180f, 0f); // se lai data cho boss
         trans_Player.GetComponent<Player>().Reset_Game_Init();
         Follow.instance.win_Boss_Game = false;
     }

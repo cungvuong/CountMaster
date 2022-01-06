@@ -57,6 +57,7 @@ public class Touch_Free : MonoBehaviour
                 mount_Clone = 210 - Player.instance.player_Oj_List.Count;
                 Pooling_Player.instance.sodu += mount_Du;
             }
+            if(mount_Clone!=0)
             for (int j = 0; j < mount_Clone; j++) // sinh them so luong player
             {
                 GameObject x = Pooling_Player.instance.GetPooledObject();
@@ -87,9 +88,9 @@ public class Touch_Free : MonoBehaviour
 
     void AddForce_All_Player()
     {
-        foreach(GameObject x in Player.instance.player_Oj_List)
+        for (int i = 0; i < Player.instance.player_Oj_List.Count; i++)
         {
-            x.GetComponent<Player_Manager>().Corrotine_Center_Force(0.3f);
+            Player.instance.player_Oj_List[i].GetComponent<Player_Manager>().Corrotine_Center_Force(0.25f);
         }
     }
 }
