@@ -80,39 +80,43 @@ public class Pooling_Player : MonoBehaviour
 
     public Vector3 Get_Player_Pos(int index)
     {
-        Vector3 pos = new Vector3(0f, 0.2f, 0f);
-        float khoangcachx = -0.3f;
-        float khoangcachy = -0.3f;
-        int dotang = 10;
-        int demvong = 0;
-        int player_Index_Set = 0;
-        //
-        for (int i = 1; i <= dotang; i++)
-        {
-            float angle = (i - 1) * (2 * 3.14159f / (dotang));
-            float x_ = Mathf.Cos(angle) * (khoangcachx);
-            float y_ = Mathf.Sin(angle) * (khoangcachy);
-            //
-            pos += new Vector3(x_, 0f, y_);
-            pos_All[player_Index_Set] = pos;
-            pos = Vector3.zero;
+        //Vector3 pos = new Vector3(0f, 0.2f, 0f);
+        Vector3 pos = Vector3.zero;
+        //float khoangcachx = -0.3f;
+        //float khoangcachy = -0.3f;
+        //int dotang = 10;
+        //int demvong = 0;
+        //int player_Index_Set = 0;
+        ////
+        //for (int i = 1; i <= dotang; i++)
+        //{
+        //    float angle = (i - 1) * (2 * 3.14159f / (dotang));
+        //    float x_ = Mathf.Cos(angle) * (khoangcachx);
+        //    float y_ = Mathf.Sin(angle) * (khoangcachy);
+        //    //
+        //    pos += new Vector3(x_, 0f, y_);
+        //    pos_All[player_Index_Set] = pos;
+        //    pos = Vector3.zero;
 
-            if (player_Index_Set == index)
-                return pos;
-            if (i == dotang)
-            {
-                dotang += 10;
-                khoangcachx += 0.01f;
-                khoangcachy += 0.01f;
-                i = 0;
-                demvong++;
-            }
-            if (demvong == 6)
-            {
-                break;
-            }
-            player_Index_Set++;
-        }
+        //    if (player_Index_Set == index)
+        //        return pos;
+        //    if (i == dotang)
+        //    {
+        //        dotang += 10;
+        //        khoangcachx += 0.01f;
+        //        khoangcachy += 0.01f;
+        //        i = 0;
+        //        demvong++;
+        //    }
+        //    if (demvong == 6)
+        //    {
+        //        break;
+        //    }
+        //    player_Index_Set++;
+        //}
+        float x = Random.Range(-0.5f, 0.5f);
+        float z = Random.Range(-0.5f, 0.5f);
+        pos = new Vector3(x, 0.2f, z);
         return pos;
     } 
 
@@ -121,8 +125,9 @@ public class Pooling_Player : MonoBehaviour
         this.curr_Index = curr_Index;
         new_Index = Save_Data.Load().index_Curr;
         Debug.Log(curr_Index + " curr" + new_Index + " new");
-        var list_Active = Player.instance.player_Oj_List;
-        list_Active.ForEach(x =>  // setnhung player active
+        var list_Active = Player.instance.player_Oj_List; // set nhung objeCt hien hanh
+        Debug.Log(list_Active.Count + "so hien hanh");
+        list_Active.ForEach(x =>  // set nhung player active
         {
             x.gameObject.GetComponentsInChildren<Check_Player>(true)[new_Index].gameObject.SetActive(true);
             x.gameObject.GetComponentsInChildren<Check_Player>(true)[curr_Index].gameObject.SetActive(false);
@@ -131,15 +136,13 @@ public class Pooling_Player : MonoBehaviour
 
     public void Set_NV_After_Back()
     {
+        Debug.Log("Set het");
         // set lai index
-        var list_Active = list_Obj;
-        list_Active.ForEach(x =>
+        List<GameObject> list_Temp = list_Obj;
+        list_Temp.ForEach(x =>
         {
-            if(!x.gameObject.GetComponentsInChildren<Check_Player>(true)[new_Index].gameObject.activeSelf)
-            {
                 x.gameObject.GetComponentsInChildren<Check_Player>(true)[new_Index].gameObject.SetActive(true);
-                x.gameObject.GetComponentsInChildren<Check_Player>(true)[this.curr_Index].gameObject.SetActive(false);
-            }
+                x.gameObject.GetComponentsInChildren<Check_Player>(true)[curr_Index].gameObject.SetActive(false);
         });
     }
 

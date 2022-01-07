@@ -45,7 +45,6 @@ public class Test_Player : MonoBehaviour
         Range_Pooling_Ground(); // pooling ground
         Range_Start_CauGay(); // pooling trap oon ground
         RangeMap_Start();
-        Debug.Log("Load test Player");
     }
 
     void Range_Pooling_Ground()
@@ -80,10 +79,14 @@ public class Test_Player : MonoBehaviour
         GameObject Player = GameObject.FindGameObjectWithTag("Player"); // lay trans player 
         GameObject ground1 = list_Gound[x1]; // lay ra map dc chon 1
         GameObject ground2 = list_Gound[x2]; // lay ra map dc chon 2
+        ground1.transform.localPosition = Vector3.zero; // set vi tri ground 1
+        Range_Map_Check_Pos(ground1, ground2); // ground 2
+        Range_Map_Check_Pos(ground2, x3); // ground 3
         ground1.SetActive(true); // set hien thi g1 
         if (ground1.GetComponent<CauGay>())
         {
             Set_Map_CauDaiGay(ground1);
+            Map_CauGay(ground1);
         }
         else
         {
@@ -97,7 +100,7 @@ public class Test_Player : MonoBehaviour
             }
         }
         ground2.SetActive(true); // set hien thi g2
-        if (ground2.GetComponent<CauGay>())
+        if (ground2.GetComponent<CauGay>()) // set trap tren gr2
         {
             Set_Map_CauDaiGay(ground2);
         }
@@ -113,15 +116,23 @@ public class Test_Player : MonoBehaviour
             }
         }
         //
-        ground1.transform.position = Vector3.zero; // set vi tri ground 1
-        Range_Map_Check_Pos(ground1, ground2); // ground 2
-        Range_Map_Check_Pos(ground2, x3); // ground 3
-
-        boss_House.transform.position = new Vector3(x3.transform.position.x, boss_House.transform.position.y, x3.transform.position.z + 15f); // set vi tri nha boss
-        ground_Player.transform.position = new Vector3(ground1.transform.position.x, ground_Player.transform.position.y, (CheckDai(ground1) ? (-62.5f) : (-37.5f))); // set vi tri ground start player
+        boss_House.transform.position = new Vector3(x3.transform.localPosition.x, boss_House.transform.localPosition.y, x3.transform.localPosition.z + 15f); // set vi tri nha boss
+        ground_Player.transform.position = new Vector3(ground1.transform.localPosition.x, ground_Player.transform.localPosition.y, (CheckDai(ground1) ? (-62.5f) : (-37.5f))); // set vi tri ground start player
         ground_Player.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-        Player.transform.position = new Vector3(Player.transform.position.x, Player.transform.position.y, ground_Player.transform.position.z - 3f); // set trans Player
+        Player.transform.position = new Vector3(Player.transform.localPosition.x, Player.transform.localPosition.y, ground_Player.transform.localPosition.z - 3f); // set trans Player
     }
+
+    void Map_CauGay(GameObject ground)
+    {
+        int i = 0;
+        Manager_Grounds.instance.manager_Map_Clone_Free = Manager_Grounds.ShuffleList<GameObject>(Manager_Grounds.instance.manager_Map_Clone_Free);
+        for (i = 0; i < Manager_Grounds.instance.manager_Map_Clone_Free.Count; i++)
+        {
+            GameObject x = Manager_Grounds.instance.manager_Map_Clone_Free[i];
+            x.transform.parent = ground.transform;
+            x.transform.localPosition = new Vector3(x.transform.localPosition.x, x.transform.localPosition.y, ground.transform.localPosition.z + (5 * ((i%2==0) ? 1 : -1))); x.SetActive(true);
+        }
+    } 
 
     void Set_Pos_OnGround2(int mountTrap, GameObject ground)
     {
@@ -149,41 +160,42 @@ public class Test_Player : MonoBehaviour
 
     void Set_Pos_OnGround1(int mountTrap, GameObject ground)
     {
-        int kc = 1; int i = 0;
+        int kc = 1;
+        int i = 0;
         Manager_Grounds.instance.manager_Map = Manager_Grounds.ShuffleList<GameObject>(Manager_Grounds.instance.manager_Map);
         Manager_Grounds.instance.manager_Map_Clone_Free = Manager_Grounds.ShuffleList<GameObject>(Manager_Grounds.instance.manager_Map_Clone_Free);
-        for(i=0; i< Manager_Grounds.instance.manager_Map_Clone_Free.Count; i++)
+        for (i = 0; i < Manager_Grounds.instance.manager_Map_Clone_Free.Count; i++)
         {
             GameObject x = Manager_Grounds.instance.manager_Map_Clone_Free[i];
-            if(mountTrap == 4)
+            if (mountTrap == 4) // neu la duong ngan
             {
-                x.transform.position = new Vector3(x.transform.position.x, x.transform.position.y, ground.transform.position.z + (-10f * i)); x.SetActive(true);
                 x.transform.parent = ground.transform;
+                x.transform.localPosition = new Vector3(x.transform.localPosition.x, x.transform.localPosition.y, ground.transform.localPosition.z + (-10f * i)); x.SetActive(true);
             }
             else
             {
-                x.transform.position = new Vector3(x.transform.position.x, x.transform.position.y, ground.transform.position.z + (-10f * (i + 3))); x.SetActive(true);
                 x.transform.parent = ground.transform;
+                x.transform.localPosition = new Vector3(x.transform.localPosition.x, x.transform.localPosition.y, ground.transform.localPosition.z + (-10f * (i + 3))); x.SetActive(true);
             }
         }
 
-        for (int j = (i-1); i < mountTrap; i++)
+        for (int j = (i); j < mountTrap; j++)
         {
             if (mountTrap == 4 && i == 0) { kc++; continue; };
-            if (mountTrap == 8 && (i == 0 || i==1)) { kc++; continue; };
-            if (i == (mountTrap / 2)) kc = 1;
-            if (i <= (mountTrap / 2) - 1)
+            if (mountTrap == 8 && (j == 0 || j == 1)) { kc++; continue; };
+            if (j == (mountTrap / 2)) kc = 1;
+            if (j <= (mountTrap / 2) - 1)
             {
                 GameObject x = GetObjectPoolOf(Manager_Grounds.instance.manager_Map);
-                x.transform.position = new Vector3(x.transform.position.x, x.transform.position.y, ground.transform.position.z + (-10f * kc)); x.SetActive(true);
                 x.transform.parent = ground.transform;
+                x.transform.localPosition = new Vector3(x.transform.localPosition.x, x.transform.localPosition.y, ground.transform.position.z + (-10f * kc)); x.SetActive(true);
                 kc++;
             }
             else
             {
                 GameObject x = GetObjectPoolOf(Manager_Grounds.instance.manager_Map);
-                x.transform.position = new Vector3(x.transform.position.x, x.transform.position.y, ground.transform.position.z + (10f * kc)); x.SetActive(true);
                 x.transform.parent = ground.transform;
+                x.transform.localPosition = new Vector3(x.transform.localPosition.x, x.transform.localPosition.y, ground.transform.position.z + (10f * kc)); x.SetActive(true);
                 kc++;
             }
         }
@@ -230,13 +242,13 @@ public class Test_Player : MonoBehaviour
     {
         float Z = 0f;
         Z = (CheckDai(checkObj) ? 50f : 25f) + KcRange(checkObj) + (CheckDai(instan_Obj) ? 50f : 25f);
-        instan_Obj.transform.position = checkObj.transform.position + new Vector3(0f, 0f, Z);
+        instan_Obj.transform.localPosition = checkObj.transform.localPosition + new Vector3(0f, 0f, Z);
         if (KcRange(checkObj) == 8f) //  neu la duong ko co cau
         {
             GameObject x = GetObjectPoolOf(list_CauNoi);
             if (x != null)
             {
-                x.transform.position = checkObj.transform.position + new Vector3(0f, 0f, (CheckDai(checkObj) ? 50f : 25f) + 4f); // tinh lai vi tri
+                x.transform.localPosition = checkObj.transform.localPosition + new Vector3(0f, 0f, (CheckDai(checkObj) ? 50f : 25f) + 4f); // tinh lai vi tri
                 x.SetActive(true);
             }
         }

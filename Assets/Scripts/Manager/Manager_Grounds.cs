@@ -36,7 +36,6 @@ public class Manager_Grounds : MonoBehaviour
     [HideInInspector]
     public List<GameObject> manager_Map = new List<GameObject>();
     public List<GameObject> manager_Map_Clone_Free = new List<GameObject>();
-    float[] range_Trap_Dis = {15f, 40f, 50f, 60f, 70f, 95f, 105f, 115f, 125f, 135f};
     //
     private void OnEnable()
     {
@@ -51,7 +50,6 @@ public class Manager_Grounds : MonoBehaviour
         GameObject free2 = Instantiate(things_Clone_All[Random.Range(0, things_Clone_All.Length)], things_Clone_All[Random.Range(0, things_Clone_All.Length)].transform.position + new Vector3(0f, 0f, 8f), things_Clone_All[Random.Range(0, things_Clone_All.Length)].transform.rotation, things_Parent.transform);
         manager_Map_Clone_Free.Add(free2);
         // pooling all trap ground
-        Debug.Log(things_Map1_2.Length);
         for (int i = 0; i < 2; i++)
         {
             for(int j=0; j<things_Map1_2.Length; j++)
@@ -122,85 +120,6 @@ public class Manager_Grounds : MonoBehaviour
             float z = Random.Range(0f, 200f);
             //float y = Random.Range(-7.5f, -5f);
             Instantiate(mountain, transform.position + new Vector3(x, -7.5f, z), Quaternion.identity, mountain_Parent.transform);
-        }
-    }
-
-    void Manager_Clone_Range()
-    {
-        clone_free = GameObject.FindGameObjectsWithTag("free_clone");
-        clone_ques = GameObject.FindGameObjectsWithTag("clone_ques");
-
-        for (int i = 0; i < clone_free.Length; i++)
-        {
-            for (int j = 0; j < clone_ques.Length; j++)
-            {
-                if (clone_free[i].transform.position.z >= clone_ques[j].transform.position.z)
-                {
-                    Vector3 x = clone_free[i].transform.position;
-                    clone_free[i].transform.position = clone_ques[j].transform.position;
-                    clone_ques[j].transform.position = x;
-                }
-            }
-        }
-    }
-
-    void Manager_Tru()
-    {
-        GameObject[] list_Tru = GameObject.FindGameObjectsWithTag("tru");
-        if(list_Tru.Length >= 2)
-        {
-            for(int i=1; i<list_Tru.Length; i++)
-            {
-                // sinh ra free clone thay the
-                list_Tru[i].SetActive(false);
-            }
-        }
-    }
-
-    void Manager_Bua_Dao()
-    {
-        GameObject[] list_Dao = GameObject.FindGameObjectsWithTag("dao");
-        GameObject[] list_Bua = GameObject.FindGameObjectsWithTag("bua");
-        GameObject[] super_Trap = GameObject.FindGameObjectsWithTag("super_trap");
-        GameObject[] list_free = GameObject.FindGameObjectsWithTag("free_clone");
-        if (list_Dao.Length >2)
-        {
-            for (int i = 2; i < list_Dao.Length; i++)
-            {
-                // sinh ra free clone thay the
-                Instantiate(things_Clone_All[Random.Range(0, things_Clone_All.Length)], things_Clone_All[Random.Range(0, things_Clone_All.Length)].transform.position + new Vector3(0f, 0f, list_Dao[i].transform.position.z), things_Clone_All[Random.Range(0, things_Clone_All.Length)].transform.rotation, things_Parent.transform);
-                list_Dao[i].SetActive(false);
-            }
-        }
-
-        if (list_Bua.Length > 2)
-        {
-            for (int i = 2; i < list_Bua.Length; i++)
-            {
-                // sinh ra free clone thay the
-                Instantiate(things_Clone_All[Random.Range(0, things_Clone_All.Length)], things_Clone_All[Random.Range(0, things_Clone_All.Length)].transform.position + new Vector3(0f, 0f, list_Bua[i].transform.position.z), things_Clone_All[Random.Range(0, things_Clone_All.Length)].transform.rotation, things_Parent.transform);
-
-                list_Bua[i].SetActive(false);
-            }
-        }
-
-        if (super_Trap.Length > 2)
-        {
-            for (int i = 2; i < super_Trap.Length; i++)
-            {
-                // sinh ra free clone thay the
-                Instantiate(things_Clone_All[Random.Range(0, things_Clone_All.Length)], things_Clone_All[Random.Range(0, things_Clone_All.Length)].transform.position + new Vector3(0f, 0f, super_Trap[i].transform.position.z), things_Clone_All[Random.Range(0, things_Clone_All.Length)].transform.rotation, things_Parent.transform);
-                super_Trap[i].SetActive(false);
-            }
-        }
-
-        if (list_free.Length > 4)
-        {
-            for (int i = 4; i < list_free.Length; i++)
-            {
-                // sinh ra free clone thay the
-                list_free[i].SetActive(false);
-            }
         }
     }
 

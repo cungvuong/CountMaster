@@ -548,7 +548,7 @@ GameObject:
   m_Component:
   - component: {fileID: 163665321}
   m_Layer: 0
-  m_Name: Mountain_Clone
+  m_Name: Mountain_CloneAndUi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2593,7 +2593,8 @@ MonoBehaviour:
   - {fileID: 6528833889549556957, guid: d914f4c756510cc49b074d025b59c5c0, type: 3}
   - {fileID: 2951356147702666513, guid: c4aecabf4975c814cb99c1d19823c2fe, type: 3}
   - {fileID: 3337867248421699516, guid: 80878b161503bc94bb3579d2d659019f, type: 3}
-  - {fileID: 3993238699055818990, guid: 33bd1559e89d6664fa39c147c41fe0a2, type: 3}
+  - {fileID: 6625304817835145032, guid: 25ba88566826e3f409cea3b4e0c67bae, type: 3}
+  - {fileID: 6625304817835145032, guid: 3652cd8163f94cf41bf280033b2304e1, type: 3}
   things_Clone_Ques_Trap:
   - {fileID: 7045064309938005419, guid: 95f91388aba2b2f479c82d60284192e6, type: 3}
   - {fileID: 7045064309938005419, guid: 95f91388aba2b2f479c82d60284192e6, type: 3}
@@ -2779,6 +2780,18 @@ MonoBehaviour:
       - m_Target: {fileID: 747318215}
         m_TargetAssemblyTypeName: Manager_UI, Assembly-CSharp
         m_MethodName: Close_Clother_UI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 317823220}
+        m_TargetAssemblyTypeName: Pooling_Player, Assembly-CSharp
+        m_MethodName: Set_NV_After_Back
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8729,8 +8742,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2093984884}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -175.8405}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1267445248}
@@ -8742,7 +8755,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 30.403133, y: 21.948252}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!1 &2100955756

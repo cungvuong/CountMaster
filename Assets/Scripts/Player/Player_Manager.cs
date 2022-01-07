@@ -112,7 +112,7 @@ public class Player_Manager : MonoBehaviour
                 {
                     Vector3 targetPos = new Vector3(enemy.transform.position.x, transform.position.y, enemy.transform.position.z);
                     transform.LookAt(targetPos);
-                    transform.position = Vector3.MoveTowards(new Vector3(transform.position.x, 0.25f, transform.position.z), new Vector3(enemy.transform.position.x, 1f, enemy.transform.position.z), 0.3f);
+                    transform.position = Vector3.MoveTowards(new Vector3(transform.position.x, 0.25f, transform.position.z), new Vector3(enemy.transform.position.x, 1f, enemy.transform.position.z), 0.2f);
                     if (Mathf.Abs((enemy.transform.position - transform.position).magnitude) <= 3f)
                     {
                         transform.gameObject.GetComponentInChildren<Animator>().Play("Attack");
